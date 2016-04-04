@@ -1,0 +1,16 @@
+{
+  "name": "Tales",
+  "version": "3.3.6-v2",
+  "description": "A blog theme for Bootstrap",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HackerThemes",
+  "license": "http://support.wrapbootstrap.com/knowledge_base/topics/usage-licenses",
+  "dependencies": {
+    "font-awesome": "4.5.0",
+    "jquery": "2.2.1",
+    "bootstrap": "3.3.6"
+  }
+}
