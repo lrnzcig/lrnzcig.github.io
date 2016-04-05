@@ -118,7 +118,7 @@
                                     Is there a way to distinguish the customers that respond (or not) to a marketing action when targeted, from the customers that respond (or not) when they are not targeted? Which scenarios are relevant for uplift modeling, compared to a “traditional” model? How to evaluate them from a business perspective? How to fit the uplift model in R?
                                 </div>
                                 <div class="clearfix">
-                                    <a href="2016-04-01-uplift-evaluation.html" class="btn btn-tales-one">Read more</a>
+                                    <a href="2016-04-01-uplift-evaluation.html" class="btn btn-tales-one" id="uplift-click">Read more</a>
                                 </div>
                             </article>
                         </div>
@@ -175,5 +175,17 @@
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="modules/modernizr/modernizr-custom.js"></script>
+
+    <script>
+    var el = document.getElementById('uplift-click');
+
+    el.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'ReadMore',
+                   eventAction: 'Click',
+                   eventLabel: 'Uplift',
+                   eventValue: 1 });
+    }, false);
+    </script>
 </body>
 </html>
