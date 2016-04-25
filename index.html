@@ -37,7 +37,7 @@
       a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })
     (window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
+
     var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
 
     if (window.localStorage) {
@@ -48,6 +48,7 @@
       ga(function(tracker) {
         localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
       });
+      ga('set', 'clientId', localStorage.getItem(GA_LOCAL_STORAGE_KEY)); // clientId as custom???
     }
     else {
       ga('create', 'UA-75939736-1', 'auto');
