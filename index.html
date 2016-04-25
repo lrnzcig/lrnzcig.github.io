@@ -48,7 +48,10 @@
       ga(function(tracker) {
         localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
       });
-      ga('set', 'clientId', localStorage.getItem(GA_LOCAL_STORAGE_KEY)); // clientId as custom???
+      ga('set', 'clientIdCustom', localStorage.getItem(GA_LOCAL_STORAGE_KEY)); // clientId as custom???
+      ga('set', 'clientIdH', localStorage.getItem(GA_LOCAL_STORAGE_KEY)); // clientId as custom???
+      ga('set', 'clientIdS', localStorage.getItem(GA_LOCAL_STORAGE_KEY)); // clientId as custom???
+      ga('set', 'clientIdU', localStorage.getItem(GA_LOCAL_STORAGE_KEY)); // clientId as custom???
     }
     else {
       ga('create', 'UA-75939736-1', 'auto');
