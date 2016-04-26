@@ -39,6 +39,7 @@
     (window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
+    var CLIENT_ID;
 
     if (window.localStorage) {
       ga('create', 'UA-75939736-1', 'auto', {
@@ -48,18 +49,15 @@
       ga(function(tracker) {
         localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
       });
-      var CLIENT_ID = localStorage.getItem(GA_LOCAL_STORAGE_KEY);
-      //ga('set', 'dimension1', '111'); // clientId as custom???
-      ga('set', 'dimension2', CLIENT_ID); // clientId as custom???
-      ga('set', 'dimension3', CLIENT_ID); // clientId as custom???
-      ga('set', 'dimension4', CLIENT_ID); // clientId as custom???
+      CLIENT_ID = localStorage.getItem(GA_LOCAL_STORAGE_KEY);
     }
     else {
       ga('create', 'UA-75939736-1', 'auto');
+      CLIENT_ID = "no local storage"
     }
 
     ga('send', 'pageview', {
-      'dimension1': '222'
+      'dimension1': CLIENT_ID
     });
     </script>
 </head>
