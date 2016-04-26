@@ -43,7 +43,28 @@
       a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })
     (window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-75939736-1', 'auto'); ga('send', 'pageview');
+    
+    var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
+    var CLIENT_ID;
+
+    if (window.localStorage) {
+      ga('create', 'UA-75939736-1', 'auto', {
+        'storage': 'none',
+        'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
+      });
+      ga(function(tracker) {
+        localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
+      });
+      CLIENT_ID = localStorage.getItem(GA_LOCAL_STORAGE_KEY);
+    }
+    else {
+      ga('create', 'UA-75939736-1', 'auto');
+      CLIENT_ID = "no local storage"
+    }
+
+    ga('send', 'pageview', {
+      'dimension1': CLIENT_ID
+    });
     </script>
     <!-- end ga pageview -->
 
