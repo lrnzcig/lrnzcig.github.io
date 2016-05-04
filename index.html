@@ -266,18 +266,17 @@
     <script src="modules/modernizr/modernizr-custom.js"></script>
 
     <script>
-    <!-- TAGS -->
+    // TAGS
     function getEventTarget(e) {
+      // gets the targeted li
       e = e || window.event;
       return e.target || e.srcElement;
-    }
+    };
 
-    var ul = document.getElementById('tags-ul');
-    ul.onclick = function(event) {
-      var target = getEventTarget(event);
-      var tag_value = target.innerHTML;
-      var arules = document.getElementById('arules-div');
-      var uplift = document.getElementById('uplift-div');
+    // handle which elements hide and show depending on the tag that has been clicked
+    var arules = document.getElementById('arules-div');
+    var uplift = document.getElementById('uplift-div');
+    function hideShowDivsForTags(tag_value) {
       if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
         arules.style.display = 'none';
         uplift.style.display = '';
@@ -290,12 +289,26 @@
       }
     };
 
-    $('tags-ul').on("blur focus keydown mousedown", function() {
-      //do something else here
-      alert("yes")
+    // events on the ul
+    var lastClicked;
+    $('#tags-ul').on("click", function(event) {
+      var target = getEventTarget(event);
+      hideShowDivsForTags(target.innerHTML);
+      lastClicked = target.innerHTML;
+    }).on("mouseover", function(event) {
+      var target = getEventTarget(event);
+      if (target.innerHTML == target.innerText && ! lastClicked) {
+        hideShowDivsForTags(target.innerHTML);
+      } else {
+        hideShowDivsForTags(lastClicked);
+      }
+    }).on("focusout", function() {
+      lastClicked = null;
+      hideShowDivsForTags('');
     });
 
-    <!-- GA events -->
+
+    // GA events
     var uc = document.getElementById('uplift-click');
     var ut = document.getElementById('uplift-title');
     var ac = document.getElementById('arules-click');
