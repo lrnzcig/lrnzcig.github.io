@@ -296,17 +296,34 @@
       hideShowDivsForTags(target.innerHTML);
       lastClicked = target.innerHTML;
     }).on("mouseover", function(event) {
-      var target = getEventTarget(event);
-      if (target.innerHTML == target.innerText && ! lastClicked) {
-        hideShowDivsForTags(target.innerHTML);
-      } else {
-        hideShowDivsForTags(lastClicked);
-      }
+      delay(this, event, function(event) {
+        var target = getEventTarget(event);
+        if (target.innerHTML == target.innerText && ! lastClicked) {
+          hideShowDivsForTags(target.innerHTML);
+        } else {
+          hideShowDivsForTags(lastClicked);
+        };
+      })
     }).on("focusout", function() {
       lastClicked = null;
       hideShowDivsForTags('');
     });
 
+    // delay for mouseover
+    var delay = function (elem, event, callback) {
+        var timeout = null;
+        elem.onmouseover = function() {
+            // Set timeout to be a timer which will invoke callback after 1s
+            timeout = setTimeout(function(){
+              callback(event);
+            }, 500);
+        };
+
+        elem.onmouseout = function() {
+            // Clear any timers set to timeout
+            clearTimeout(timeout);
+        }
+    };
 
     // GA events
     var uc = document.getElementById('uplift-click');
