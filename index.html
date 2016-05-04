@@ -38,6 +38,7 @@
     })
     (window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+    // TODO js function
     var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
     var CLIENT_ID;
 
@@ -86,6 +87,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="index.html">Blog</a></li>
+                                    <li><a href="2016-05-03-association-rules.html">Arules clickstream</a></li>
                                     <li><a href="2016-04-01-uplift-evaluation.html">Uplift evaluation</a></li>
                                 </ul>
                             </li>
@@ -125,44 +127,87 @@
             <div class="row">
                 <div class="col-md-8 blog-main">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                                <header>
-                                    <img src="img/liftarn-Perseus-200px.png" alt="Perseus">
-                                    <h3><a href="2016-04-01-uplift-evaluation.html" id="uplift-title" >
-                                    <span itemprop="name">Cost/benefit evaluation of Uplift Modeling with an example in R</span></a></h3>
-                                    <span itemprop="datePublished" content="2016-04-06" class="meta">6 April 2016</span>
-                                    <span style="display: none"><!-- Structured Data -->
-                                      <span itemprop="author" itemtype="http://schema.org/Person">
-                                        <span itemprop="name">sisifospage@gmail.com</span>
-                                      </span>
-                                      <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/liftarn-Perseus-300px.png"></a>
-                                        <span itemprop="height">214</span>
-                                        <span itemprop="width">300</span>
-                                      </span>
-                                      <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                        <span itemprop="name">Sisifo's Page</span>
-                                        <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                          <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                        </span>
-                                      </span>
-                                      <span itemprop="headline" style="display: none">scenarios are relevant for uplift modeling, evaluate them from a business perspective</span></a></h3>
-                                      <span itemprop="dateModified" content="2016-04-06" class="meta">6 April 2016</span>
-                                      <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                        <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
+
+                      <!-- arules -->
+                      <div class="col-md-6 col-sm-6" id="arules-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/Petroglyph-Rayed-figure-200px.png" alt="Petroglyph">
+                                  <h3><a href="2016-05-03-association-rules.html" id="arules-title" >
+                                  <span itemprop="name">Association Rules applied to Google Analytics data for insights on the structure of a web site</span></a></h3>
+                                  <span itemprop="datePublished" content="2016-05-06" class="meta">6 May 2016</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Petroglyph-Rayed-figure-200px.png"></a>
+                                      <span itemprop="height">175</span>
+                                      <span itemprop="width">200</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
                                       </span>
                                     </span>
-                                    <hr>
-                                </header>
-                                <div class="body">
-                                    Is there a way to distinguish the customers that respond (or not) to a marketing action when targeted, from the customers that respond (or not) when they are not targeted? Which scenarios are relevant for uplift modeling, compared to a “traditional” model? How to evaluate them from a business perspective? How to fit the uplift model in R?
-                                </div>
-                                <div class="clearfix">
-                                    <a href="2016-04-01-uplift-evaluation.html" class="btn btn-tales-one" id="uplift-click">Read more</a>
-                                </div>
-                            </article>
-                        </div>
+                                    <span itemprop="headline" style="display: none">apriori for clikstream data, data.table, the structure of the site as seen by the users, collaborative filtering, R tutorial</span></a></h3>
+                                    <span itemprop="dateModified" content="2016-05-06" class="meta">6 May 2016</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                      <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  How to mine Association Rules on clickstream data from Google Analytics, as a way to understand how users visit your web site. Includes details on how to configure GA and how to extract the data into R, plus the code in R for mining the rules. Seed for a recommendation system in your web site.
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2016-05-03-association-rules.html" class="btn btn-tales-one" id="arules-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
+                      <!-- uplift -->
+                      <div class="col-md-6 col-sm-6" id="uplift-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/liftarn-Perseus-200px.png" alt="Perseus">
+                                  <h3><a href="2016-04-01-uplift-evaluation.html" id="uplift-title" >
+                                  <span itemprop="name">Cost/benefit evaluation of Uplift Modeling with an example in R</span></a></h3>
+                                  <span itemprop="datePublished" content="2016-04-06" class="meta">6 April 2016</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/liftarn-Perseus-200px.png"></a>
+                                      <span itemprop="height">143</span>
+                                      <span itemprop="width">200</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                                      </span>
+                                    </span>
+                                    <span itemprop="headline" style="display: none">scenarios are relevant for uplift modeling, evaluate them from a business perspective</span></a></h3>
+                                    <span itemprop="dateModified" content="2016-04-06" class="meta">6 April 2016</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                      <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  Is there a way to distinguish the customers that respond (or not) to a marketing action when targeted, from the customers that respond (or not) when they are not targeted? Which scenarios are relevant for uplift modeling, compared to a “traditional” model? How to evaluate them from a business perspective? How to fit the uplift model in R?
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2016-04-01-uplift-evaluation.html" class="btn btn-tales-one" id="uplift-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
                     </div>
 
                     <div class="paging">
@@ -178,10 +223,12 @@
                             <h3>Tags</h3>
                         </header>
                         <div class="body clearfix">
-                            <ul class="tags">
+                            <ul class="tags" id="tags-ul">
                                 <li><a href="#">Uplift modeling</a></li>
                                 <li><a href="#">R</a></li>
                                 <li><a href="#">Business evaluation</a></li>
+                                <li><a href="#">Association Rules</a></li>
+                                <li><a href="#">Google Analytics</a></li>
                             </ul>
                         </div>
                     </div>
@@ -219,8 +266,40 @@
     <script src="modules/modernizr/modernizr-custom.js"></script>
 
     <script>
+    <!-- TAGS -->
+    function getEventTarget(e) {
+      e = e || window.event;
+      return e.target || e.srcElement;
+    }
+
+    var ul = document.getElementById('tags-ul');
+    ul.onclick = function(event) {
+      var target = getEventTarget(event);
+      var tag_value = target.innerHTML;
+      var arules = document.getElementById('arules-div');
+      var uplift = document.getElementById('uplift-div');
+      if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
+        arules.style.display = 'none';
+        uplift.style.display = '';
+      } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
+        arules.style.display = '';
+        uplift.style.display = 'none';
+      } else {
+        arules.style.display = '';
+        uplift.style.display = '';
+      }
+    };
+
+    $('tags-ul').on("blur focus keydown mousedown", function() {
+      //do something else here
+      alert("yes")
+    });
+
+    <!-- GA events -->
     var uc = document.getElementById('uplift-click');
     var ut = document.getElementById('uplift-title');
+    var ac = document.getElementById('arules-click');
+    var at = document.getElementById('arules-title');
 
     uc.addEventListener('click', function() {
       ga('send', { hitType: 'event',
@@ -235,6 +314,20 @@
                    eventAction: 'Click',
                    eventLabel: 'Uplift',
                    eventValue: 2 });
+    }, false);
+    ac.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'ReadMore',
+                   eventAction: 'Click',
+                   eventLabel: 'Arules',
+                   eventValue: 3 });
+    }, false);
+    at.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'Title',
+                   eventAction: 'Click',
+                   eventLabel: 'Arules',
+                   eventValue: 4 });
     }, false);
     </script>
 </body>
