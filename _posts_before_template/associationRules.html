@@ -171,8 +171,10 @@ $(document).ready(function () {
 <p>If it is the first time you use GA API, you need to get credentials for your user. The procedure may change over time, but you can always rely on help pages like <a href="https://developers.google.com/analytics/devguides/config/mgmt/v3/quickstart/service-java#summary_auth">this one</a>. Anyhow, as of today the steps would be:</p>
 <ul>
 <li><p>Go to <a href="https://console.developers.google.com/projectselector/apis/credentials" class="uri">https://console.developers.google.com/projectselector/apis/credentials</a>. If you do it from a tab of your browser in which you’ve already login with your GA user id, you will see already your project for GA tracking</p></li>
+<li><p>Create a new project, if you don’t have one already</p></li>
 <li><p>When you select your project and continue, you’ll reach <a href="https://console.developers.google.com/apis/credentials" class="uri">https://console.developers.google.com/apis/credentials</a>, where you can create new credentials. Add credentials selecting <em>Other UI</em>, key type <em>JSON</em>, and OAuth 2.0 client Id</p></li>
 <li><p>You end up with a <em>client.id</em> and a sort of password called <em>client.secret</em></p></li>
+<li><p>Finally, you need to enable the API for the proyect, at <a href="https://console.developers.google.com/projectselector/apis/library" class="uri">https://console.developers.google.com/projectselector/apis/library</a>. Anyhow, if you skip this step, you will get a very clear error message in your R session when you do your first access; just follow the instructions</p></li>
 </ul>
 <p>There’s a few R packages for an easy access to the GA API; this post uses <code>RGoogleAnalytics</code>. The first step in R is to install/load the library and create a token.</p>
 <pre class="r"><code>library(RGoogleAnalytics)
@@ -356,9 +358,9 @@ itemFrequencyPlot(msweb.trans, topN=12)</code></pre>
 ## set transactions ...[284 item(s), 32711 transaction(s)] done [0.01s].
 ## sorting and recoding items ... [241 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
-## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.09s].
-## writing ... [179806 set(s)] done [0.02s].
-## creating S4 object  ... done [0.09s].</code></pre>
+## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.07s].
+## writing ... [179806 set(s)] done [0.01s].
+## creating S4 object  ... done [0.06s].</code></pre>
 <pre class="r"><code>rules.tr2</code></pre>
 <pre><code>## set of 179806 itemsets</code></pre>
 <pre class="r"><code>rules.tr2.sorted &lt;- sort(rules.tr2, by=&quot;support&quot;)
@@ -456,9 +458,9 @@ inspect(subset(rules.tr2.sorted, items %in% supp_terms)[1:10])</code></pre>
 ## set transactions ...[284 item(s), 32711 transaction(s)] done [0.01s].
 ## sorting and recoding items ... [241 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
-## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.10s].
-## writing ... [281346 rule(s)] done [0.06s].
-## creating S4 object  ... done [0.12s].</code></pre>
+## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.07s].
+## writing ... [281346 rule(s)] done [0.05s].
+## creating S4 object  ... done [0.11s].</code></pre>
 <pre class="r"><code>rules.tr3.sorted &lt;- sort(rules.tr3, by=&quot;lift&quot;)
 inspect(rules.tr3.sorted[1:5])</code></pre>
 <pre><code>##   lhs                       rhs                 support confidence      lift
@@ -508,7 +510,7 @@ inspect(rules.tr3.sorted[1:5])</code></pre>
 ## set transactions ...[284 item(s), 32711 transaction(s)] done [0.01s].
 ## sorting and recoding items ... [241 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
-## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.10s].
+## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.07s].
 ## writing ... [42229 rule(s)] done [0.01s].
 ## creating S4 object  ... done [0.03s].
 ##   lhs                        rhs                  support confidence     lift
@@ -551,7 +553,7 @@ inspect(rules.tr3.sorted[1:5])</code></pre>
 ## set transactions ...[284 item(s), 32711 transaction(s)] done [0.01s].
 ## sorting and recoding items ... [241 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
-## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.09s].
+## checking subsets of size 1 2 3 4 5 6 7 8 9 10 done [0.08s].
 ## writing ... [57 rule(s)] done [0.01s].
 ## creating S4 object  ... done [0.02s].
 ##   lhs                    rhs             support confidence     lift
