@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="pandoc" />
-    <title>Sisifo - Upstreaming from a wearable</title>
+    <title>Sisifo - Wearable data upstream</title>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -119,7 +119,7 @@
               <div class="tales-breadcrumb">
                   <a href="index.html">Blog</a>
                   <span class="separator">&#x2F;</span>
-                  <a href="#">Upstreaming from a wearable</a>
+                  <a href="#">Wearable data upstream</a>
               </div>
 
               <div class="tales-searchbox">
@@ -198,7 +198,7 @@
         <span itemprop="name">sisifospage@gmail.com</span>
       </span>
       <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-        <a itemprop="url" href="http://lrnzcig.github.io/img/users81-200px.png"></a>
+        <a itemprop="url" href="http://lrnzcig.github.io/img/tom-Boiling-point-of-water-300px.png"></a>
         <span itemprop="height">200</span>
         <span itemprop="width">153</span>
       </span>
@@ -209,7 +209,7 @@
         </span>
       </span>
       <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, data lab, accelerometer data analysis</span></a></h3>
-      <span itemprop="dateModified" content="2016-08-09" class="meta">9 Aug 2016</span>
+      <span itemprop="dateModified" content="2016-08-15" class="meta">15 Aug 2016</span>
       <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
         <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
       </span>
@@ -221,16 +221,215 @@
   </div>
 
   <h3>Introduction &amp; purpose</h3>
-  <p>This post seems more related to the data engineering side of things, rather than the analytics, at least first sight. A Android app?
+  <p>This post seems more related to the data engineering side of things, rather than the analytics, at least first sight. At the end, indeed it
+    is about an Android app!
     The point is, we've been for quite some time now preparing a data laboratory, and our intention is to buy pretty soon one or two dozens of wristbands,
-    have some people wear them for a few hours a day, upstream all the data to a server, and then analyze it to find insights.</p>
-  <p>Nearly everything you need for building such a lab is available: there's several providers for the hardware of the wristband, which also give a Android
-    app to communicate with it. And Android itself has open and well documented libraries for pretty much everything you need, thus enhancing the
+    have some people wear them for a few hours a day, upstream all the data to a database in a server, and then analyze the data to find insights.</p>
+  <p>Everything you would need for building such a lab is pretty much available: there's several providers for the hardware of the wristband, which also give a Android
+    app to communicate with it. And Android itself has open and well documented libraries for nearly everything you need, thus it should be fairly easy to enhance the
     provider's app should be an easy task. However, the sensors in the wristband produce an amount of data that is not negiglible, i.e. if you want
     to process the raw data (commercial products pre-process the sensors' data in the hardware of the wristband, and only accumulated results go to the app in your
     smartphone). Besides, upstreaming is not really so common in a Android development, at least not in a fast and continuous manner. So, it was
     not so easy to prepare the app for the lab, and that's why we thought it could make a hopefully interesting and useful post.</p>
-  <p>This post aims to explain the details of such an app, with code snippets and links to the full solution, and being agnostic about the hardware</p>
+  <p>This post aims to explain the details of such an app, with code snippets and links to the full solution, and being agnostic about the hardware.</p>
+  <h3>A cache object and an upstream service</h3>
+  <p>In this post you will find the description of two main objects of the app:</p>
+  <ul>
+    <li>A cache object, a singleton class that stores the data from the wearable in an array in memory, so that the access is very fast.
+      Periodically, the cache takes the elements from its buffers and stores them in a SQLite in-memory database</li>
+    <li>An upstream service, which takes care of the communication with the server, and regularly uploading the data from the SQLite
+      database into the server via a REST API</li>
+  </ul>
+  <p>The full app, see <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStream">here</a> for the full code, contains several Android activities
+    which handle the interaction with the user and the connection with the device. The cache is tightly linked to one of the activities, while the
+    communication with the server is implemented as an Android server. (Note that, in Android development, an activity runs in the foreground and serves
+    as the user's GUI, while a service implements something that the user does not see directly, but it is important for the app, see
+    <a href="https://developer.android.com/guide/components/processes-and-threads.html">here</a> for more details.)</p>
+  <h4>The cache in detail, including code snippets</h4>
+  <p>You can find the full implementation of the object <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/cache/AccDataCacheSingleton.java">here</a>.
+    Main features follow as bullet list.</p>
+  <ul>
+    <li>It is implemented as a singleton, which means there is a unique instance of the object in the app -thus the unique and same instance may be
+      retreived from either the Activity handling the interaction with the user and the hardware, or from the Upstream Service</li>
+  </ul>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">AccDataCacheSingleton</span> <span style="color: #666666">{</span>
+
+    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">static</span> AccDataCacheSingleton accDataCacheSingleton<span style="color: #666666">;</span>
+
+    <span style="color: #666666">...</span>
+
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> AccDataCacheSingleton <span style="color: #0000FF">getInstance</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">(</span>accDataCacheSingleton <span style="color: #666666">==</span> <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            Log<span style="color: #666666">.</span><span style="color: #7D9029">d</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> <span style="color: #BA2121">&quot;Creating cache singleton&quot;</span><span style="color: #666666">);</span>
+            accDataCacheSingleton <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> AccDataCacheSingleton<span style="color: #666666">();</span>
+        <span style="color: #666666">}</span>
+        <span style="color: #008000; font-weight: bold">return</span> accDataCacheSingleton<span style="color: #666666">;</span>
+    <span style="color: #666666">}</span>
+  </pre></div>
+  <p>Additionally, the singleton has an initialization method, which has to be invoked only when the connection with the device is established.
+    In this method:
+    <ul style="padding-left:80px">
+      <li>The context of the Android activity is stored -will be used for establishing the connection with the SQLite database, and also in the service</li>
+      <li>Buffers are initialized</li>
+      <li>Params of the connection are put into class variables</li>
+      <li>The upstreaming service is created</li>
+    </ul>
+  </p>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">init</span><span style="color: #666666">(</span>Context context<span style="color: #666666">,</span> String macAddress<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+        <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #7D9029">context</span> <span style="color: #666666">=</span> context<span style="color: #666666">;</span>    <span style="color: #408080; font-style: italic">// expects that caller passes this.getBaseContext()</span>
+
+        setMacAddress<span style="color: #666666">(</span>macAddress<span style="color: #666666">);</span>
+
+        <span style="color: #408080; font-style: italic">// init buffer</span>
+        bufferOf2 <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Buffer<span style="color: #666666">[2];</span>
+        bufferPointer <span style="color: #666666">=</span> <span style="color: #666666">0;</span>
+        unitsPointer <span style="color: #666666">=</span> <span style="color: #666666">0;</span>
+        bufferBackupPending <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">;</span>
+        bufferOf2<span style="color: #666666">[</span>bufferPointer<span style="color: #666666">]</span> <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Buffer<span style="color: #666666">();</span>
+
+        <span style="color: #408080; font-style: italic">// set next value of headerId for SQLite</span>
+        setNewHeaderId<span style="color: #666666">();</span>
+
+        <span style="color: #408080; font-style: italic">// service for uploading to server</span>
+        Intent serviceIntent <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Intent<span style="color: #666666">(</span>context<span style="color: #666666">,</span> UpstreamService<span style="color: #666666">.</span><span style="color: #7D9029">class</span><span style="color: #666666">);</span>
+        context<span style="color: #666666">.</span><span style="color: #7D9029">startService</span><span style="color: #666666">(</span>serviceIntent<span style="color: #666666">);</span>
+    <span style="color: #666666">}</span>
+  </pre></div>
+  <ul>
+    <li>The cache receives requests from the main activity to add data from the sensor. Note that these data come one by one, and at a relatively high
+      rate. For example, in the case of an accelerometer, it may be between 10 and 50 samples per second, each of them with the 3 coordinates. The
+      cache stores the data in a buffer and responds fast</li>
+  </ul>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">synchronized</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">add</span><span style="color: #666666">(</span>FraaStreamDataUnit unit<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+        bufferOf2<span style="color: #666666">[</span>bufferPointer<span style="color: #666666">].</span><span style="color: #7D9029">units</span><span style="color: #666666">[</span>unitsPointer<span style="color: #666666">++]</span> <span style="color: #666666">=</span> unit<span style="color: #666666">;</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">(</span>unitsPointer <span style="color: #666666">==</span> LENGTH_OF_BUFFER<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            Log<span style="color: #666666">.</span><span style="color: #7D9029">d</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> <span style="color: #BA2121">&quot;Recreating singleton buffer&quot;</span><span style="color: #666666">);</span>
+            toggleBuffer<span style="color: #666666">();</span>
+            <span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">InsertIntoDatabaseTask</span><span style="color: #666666">().</span><span style="color: #7D9029">execute</span><span style="color: #666666">();</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+  </pre></div>
+  <p>Additionally, when the buffer is full, the cache toggles to an second buffer for adding new data, and flushes the data of the first buffer into
+    the SQLite database. This is done through an asynchronous task, so that the activity does not have to wait for the database to finish.</p>
+  <p>This is the method that toggles the buffers when the active buffer gets full:</p>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Buffer</span> <span style="color: #666666">{</span>
+          <span style="color: #008000; font-weight: bold">public</span> FraaStreamDataUnit<span style="color: #666666">[]</span> units<span style="color: #666666">;</span>
+
+          <span style="color: #008000; font-weight: bold">public</span> <span style="color: #0000FF">Buffer</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+              <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #7D9029">units</span> <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> FraaStreamDataUnit<span style="color: #666666">[</span>LENGTH_OF_BUFFER<span style="color: #666666">];</span>
+          <span style="color: #666666">}</span>
+      <span style="color: #666666">}</span>
+
+      <span style="color: #008000; font-weight: bold">private</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">toggleBuffer</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+          <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">(</span>bufferBackupPending <span style="color: #666666">!=</span> <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+              <span style="color: #008000; font-weight: bold">throw</span> <span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">RuntimeException</span><span style="color: #666666">(</span><span style="color: #BA2121">&quot;Trying to toggle buffer when data has not been backed-up yet&quot;</span><span style="color: #666666">);</span>
+          <span style="color: #666666">}</span>
+          bufferBackupPending <span style="color: #666666">=</span> bufferPointer<span style="color: #666666">;</span>
+          bufferPointer <span style="color: #666666">=</span> <span style="color: #666666">(</span>bufferPointer <span style="color: #666666">==</span> <span style="color: #666666">0)</span> <span style="color: #666666">?</span> <span style="color: #666666">1</span> <span style="color: #666666">:</span> <span style="color: #666666">0;</span>
+          bufferOf2<span style="color: #666666">[</span>bufferPointer<span style="color: #666666">]</span> <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Buffer<span style="color: #666666">();</span>
+          unitsPointer <span style="color: #666666">=</span> <span style="color: #666666">0;</span>
+      <span style="color: #666666">}</span>
+  </pre></div>
+  <p>And the following method inserts the data of the full buffer into SQLite:</p>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">InsertIntoDatabaseTask</span> <span style="color: #008000; font-weight: bold">extends</span> AsyncTask<span style="color: #666666">&lt;</span>String<span style="color: #666666">,</span> Integer<span style="color: #666666">,</span> Integer<span style="color: #666666">&gt;</span> <span style="color: #666666">{</span>
+        <span style="color: #AA22FF">@Override</span>
+        <span style="color: #008000; font-weight: bold">protected</span> Integer <span style="color: #0000FF">doInBackground</span><span style="color: #666666">(</span>String<span style="color: #666666">...</span> params<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            FraaDbHelper fraaDbHelper <span style="color: #666666">=</span> getDbHelperWhenAvailable<span style="color: #666666">();</span>
+            <span style="color: #408080; font-style: italic">// open ddbb connection only once (faster for bulk insert)</span>
+            SQLiteDatabase db <span style="color: #666666">=</span> fraaDbHelper<span style="color: #666666">.</span><span style="color: #7D9029">getWritableDatabase</span><span style="color: #666666">();</span>
+
+            <span style="color: #008000; font-weight: bold">for</span> <span style="color: #666666">(</span>FraaStreamDataUnit unit <span style="color: #666666">:</span> bufferOf2<span style="color: #666666">[</span>bufferBackupPending<span style="color: #666666">].</span><span style="color: #7D9029">units</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                                ContentValues values <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> ContentValues<span style="color: #666666">();</span>
+                values<span style="color: #666666">.</span><span style="color: #7D9029">put</span><span style="color: #666666">(</span>AccDataContract<span style="color: #666666">.</span><span style="color: #7D9029">AccDataEntry</span><span style="color: #666666">.</span><span style="color: #7D9029">COLUMN_NAME_HEADER_ID</span><span style="color: #666666">,</span> getHeaderId<span style="color: #666666">());</span>
+                values<span style="color: #666666">.</span><span style="color: #7D9029">put</span><span style="color: #666666">(</span>AccDataContract<span style="color: #666666">.</span><span style="color: #7D9029">AccDataEntry</span><span style="color: #666666">.</span><span style="color: #7D9029">COLUMN_NAME_INDEX</span><span style="color: #666666">,</span> unit<span style="color: #666666">.</span><span style="color: #7D9029">getIndex</span><span style="color: #666666">());</span>
+                values<span style="color: #666666">.</span><span style="color: #7D9029">put</span><span style="color: #666666">(</span>AccDataContract<span style="color: #666666">.</span><span style="color: #7D9029">AccDataEntry</span><span style="color: #666666">.</span><span style="color: #7D9029">COLUMN_NAME_X</span><span style="color: #666666">,</span> unit<span style="color: #666666">.</span><span style="color: #7D9029">getX</span><span style="color: #666666">());</span>
+                values<span style="color: #666666">.</span><span style="color: #7D9029">put</span><span style="color: #666666">(</span>AccDataContract<span style="color: #666666">.</span><span style="color: #7D9029">AccDataEntry</span><span style="color: #666666">.</span><span style="color: #7D9029">COLUMN_NAME_Y</span><span style="color: #666666">,</span> unit<span style="color: #666666">.</span><span style="color: #7D9029">getY</span><span style="color: #666666">());</span>
+                values<span style="color: #666666">.</span><span style="color: #7D9029">put</span><span style="color: #666666">(</span>AccDataContract<span style="color: #666666">.</span><span style="color: #7D9029">AccDataEntry</span><span style="color: #666666">.</span><span style="color: #7D9029">COLUMN_NAME_Z</span><span style="color: #666666">,</span> unit<span style="color: #666666">.</span><span style="color: #7D9029">getZ</span><span style="color: #666666">());</span>
+                db<span style="color: #666666">.</span><span style="color: #7D9029">insert</span><span style="color: #666666">(</span>AccDataContract<span style="color: #666666">.</span><span style="color: #7D9029">AccDataEntry</span><span style="color: #666666">.</span><span style="color: #7D9029">TABLE_NAME</span><span style="color: #666666">,</span>
+                        <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">,</span>
+                        values<span style="color: #666666">);</span>
+            <span style="color: #666666">}</span>
+
+            bufferBackupPending <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">;</span>
+            db<span style="color: #666666">.</span><span style="color: #7D9029">close</span><span style="color: #666666">();</span>
+            release<span style="color: #666666">();</span>
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1;</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+  </pre></div>
+  <ul>
+    <li>Finally, it is important to note that the cache object handles every access to the SQLite database, also the ones that are required by
+      the upstream service. That way, since all accesses are handled in a single object, contention can be avoided (since SQLite implementation
+      in Android may fail in concurrent accesses). The access to the database is protected through a simple semaphore in our current
+      implementation:</li>
+  </ul>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">final</span> Semaphore available <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Semaphore<span style="color: #666666">(1);</span>
+
+    <span style="color: #008000; font-weight: bold">private</span> FraaDbHelper <span style="color: #0000FF">getDbHelperWhenAvailable</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+        available<span style="color: #666666">.</span><span style="color: #7D9029">acquireUninterruptibly</span><span style="color: #666666">();</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">FraaDbHelper</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #7D9029">context</span><span style="color: #666666">);</span>
+    <span style="color: #666666">}</span>
+  </pre></div>
+  <p>So that only one process can access at a time.</p>
+  <h4>The upstream service in detail, including code snippets</h4>
+  <p>The upstream service periodically uploads the available data into the server. As stated above, every time it needs to access the SQLite database,
+    it asks it to the instance of the cache object. Note that:</p>
+    <ul>
+      <li>The object extends an Android service, and only implements a few methods with the actual functionality. Hint: when you create a service,
+        do it with Android Studio, so that the tools take care of the modifications to the manifest and gradle scripts</li>
+      <li>The requests are done using <a href="https://developer.android.com/training/volley/index.html">volley</a>, a very handy Android library for
+        REST accesses; however, since most of the common accesses are downstream (not upstream), the library is not as straightforward to use as in other
+        cases. Still, it makes it pretty easy</li>
+      <li>Since the cache is a singleton, the communication between the service and the cache is direct. The upstream service will get the instance of
+        the cache that the activity (handling user interaction and hardware) has created -anyhow it will never initialize it. Android uses an object called
+        Service Intent to communicate the activity to the server, but in this case it is not needed
+    </ul>
+  <p>You can find the full implementation of the object
+    <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/UpstreamService.java">here</a>
+    . Main features follow as bullet list.</p>
+  <ul>
+    <li>The following method sends a bunch of data upstream to the server. It uses Google's <a href="https://github.com/google/gson">gson</a> for
+      serialization. Most of the logic is implemented as a volley custom request (since it is upstream and with particular data type), following
+      <a href="https://developer.android.com/training/volley/request-custom.html">this guidelines</a> and implemented in a generic object called
+      <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/GsonRequest.java">GsonRequest</a>
+      . Once this object is implemented, each of the requests just needs to describe what to do when the request is either successfull or fails</li>
+  </ul>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">sendToServer</span><span style="color: #666666">(</span>FraaStreamData data<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+        RequestQueue queue <span style="color: #666666">=</span> Volley<span style="color: #666666">.</span><span style="color: #7D9029">newRequestQueue</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">);</span>
+        String url <span style="color: #666666">=</span> server_url <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;data&quot;</span><span style="color: #666666">;</span>
+        GsonRequest postRequest <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> GsonRequest<span style="color: #666666">&lt;</span>FraaStreamData<span style="color: #666666">,</span> UUID<span style="color: #666666">&gt;(</span>Request<span style="color: #666666">.</span><span style="color: #7D9029">Method</span><span style="color: #666666">.</span><span style="color: #7D9029">POST</span><span style="color: #666666">,</span> url<span style="color: #666666">,</span> data<span style="color: #666666">,</span> <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">,</span>
+                <span style="color: #008000; font-weight: bold">new</span> Response<span style="color: #666666">.</span><span style="color: #7D9029">Listener</span><span style="color: #666666">&lt;</span>UUID<span style="color: #666666">&gt;()</span> <span style="color: #666666">{</span>
+                    <span style="color: #AA22FF">@Override</span>
+                    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">onResponse</span><span style="color: #666666">(</span>UUID response<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                        Log<span style="color: #666666">.</span><span style="color: #7D9029">i</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> <span style="color: #BA2121">&quot;Response id to be removed: &quot;</span> <span style="color: #666666">+</span> response <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;(&quot;</span> <span style="color: #666666">+</span> pendingRequests<span style="color: #666666">.</span><span style="color: #7D9029">get</span><span style="color: #666666">(</span>response<span style="color: #666666">).</span><span style="color: #7D9029">getHeaderId</span><span style="color: #666666">()</span> <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;)&quot;</span><span style="color: #666666">);</span>
+                        <span style="color: #408080; font-style: italic">// update new serverHeaderId</span>
+                        AccDataCacheSingleton obj <span style="color: #666666">=</span> AccDataCacheSingleton<span style="color: #666666">.</span><span style="color: #7D9029">getInstance</span><span style="color: #666666">();</span>
+                        obj<span style="color: #666666">.</span><span style="color: #7D9029">removeFromDatabase</span><span style="color: #666666">(</span>pendingRequests<span style="color: #666666">.</span><span style="color: #7D9029">get</span><span style="color: #666666">(</span>response<span style="color: #666666">));</span>
+                        Log<span style="color: #666666">.</span><span style="color: #7D9029">i</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> <span style="color: #BA2121">&quot;Response id finished removing: &quot;</span> <span style="color: #666666">+</span> response <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;(&quot;</span> <span style="color: #666666">+</span> pendingRequests<span style="color: #666666">.</span><span style="color: #7D9029">get</span><span style="color: #666666">(</span>response<span style="color: #666666">).</span><span style="color: #7D9029">getHeaderId</span><span style="color: #666666">()</span> <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;)&quot;</span><span style="color: #666666">);</span>
+                    <span style="color: #666666">}</span>
+                <span style="color: #666666">},</span> <span style="color: #008000; font-weight: bold">new</span> Response<span style="color: #666666">.</span><span style="color: #7D9029">ErrorListener</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #AA22FF">@Override</span>
+            <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">onErrorResponse</span><span style="color: #666666">(</span>VolleyError error<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                Log<span style="color: #666666">.</span><span style="color: #7D9029">i</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> <span style="color: #BA2121">&quot;sendToServer didn&#39;t work!&quot;</span><span style="color: #666666">);</span>
+                Log<span style="color: #666666">.</span><span style="color: #7D9029">i</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> error<span style="color: #666666">.</span><span style="color: #7D9029">toString</span><span style="color: #666666">());</span>
+            <span style="color: #666666">}</span>
+        <span style="color: #666666">},</span> UUID<span style="color: #666666">.</span><span style="color: #7D9029">class</span><span style="color: #666666">);</span>
+        <span style="color: #408080; font-style: italic">// avoid sending the data twice (big message over a slow network)</span>
+        postRequest<span style="color: #666666">.</span><span style="color: #7D9029">setRetryPolicy</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">new</span> DefaultRetryPolicy<span style="color: #666666">(0,</span>
+                DefaultRetryPolicy<span style="color: #666666">.</span><span style="color: #7D9029">DEFAULT_MAX_RETRIES</span><span style="color: #666666">,</span>
+                DefaultRetryPolicy<span style="color: #666666">.</span><span style="color: #7D9029">DEFAULT_BACKOFF_MULT</span><span style="color: #666666">));</span>
+        <span style="color: #408080; font-style: italic">// Add the request to the RequestQueue.</span>
+        queue<span style="color: #666666">.</span><span style="color: #7D9029">add</span><span style="color: #666666">(</span>postRequest<span style="color: #666666">);</span>
+    <span style="color: #666666">}</span>
+  </pre></div>
+
+
+
+
+
+
+
+  TODO index smaller graph, moving divs around when tags are selected
 
 
 
