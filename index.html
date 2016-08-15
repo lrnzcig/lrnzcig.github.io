@@ -128,7 +128,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 blog-main">
-                    <div class="row" div="row-1">
+                    <div class="row" id="row-1">
 
                       <!-- Wearable upstream -->
                       <div class="col-md-6 col-sm-6" id="wearupstream-div">
@@ -161,7 +161,7 @@
                                   <hr>
                               </header>
                               <div class="body">
-                                  Setting up a data lab for one or two dozens of wearables, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later. Details on the Android app implementation, including Java code, independent of the hardware used for the device.
+                                  Setting up a lab for a number of wearables, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later. Some features are not so common in an Android app implementation, e.g. a not negligible upstream of data. Includes detailed explanations and Java code.
                               </div>
                               <div class="clearfix">
                                   <a href="2016-06-10-infer-GA-sessions.html" class="btn btn-tales-one" id="wearupstream-click">Read more</a>
@@ -209,7 +209,7 @@
                       </div>
 
                     </div>
-                    <div class="row" div="row-2">
+                    <div class="row" id="row-2">
 
                       <!-- arules -->
                       <div class="col-md-6 col-sm-6" id="arules-div">
@@ -372,16 +372,28 @@
         gauserid.style.display = '';
         uplift.style.display = 'none';
         wearupstream.style.display = 'none';
+        $("#arules-div").detach().appendTo("#row-1");
       } else if (tag_value == "R") {
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = '';
         wearupstream.style.display = 'none';
+        $("#arules-div").detach().appendTo("#row-1");
       } else if (tag_value == "Wearables" || tag_value == "Android app") {
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = 'none';
         wearupstream.style.display = '';
+      } else {
+        // i.e. no tag has been clicked
+        arules.style.display = '';
+        gauserid.style.display = '';
+        uplift.style.display = '';
+        wearupstream.style.display = '';
+        $("#gauserid-div").detach().appendTo("#row-1");
+        $("#wearupstream-div").detach().prependTo("#row-1");
+        $("#uplift-div").detach().appendTo("#row-2");
+        $("#arules-div").detach().prependTo("#row-2");
       }
     };
 
