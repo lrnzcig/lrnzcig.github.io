@@ -69,7 +69,7 @@
 
 
 <!-- R markdown title and rest of head tag -->
-<title>Upstreaming data from a wearable device to a server: a Android app for a data lab</title>
+<title>Upstreaming data from a wearable device to a server: an Android app for a data lab</title>
 
 </head>
 
@@ -185,7 +185,7 @@
 
   <div class="fluid-row" id="header">
 
-    <h1 class="title"><span itemprop="name">Upstreaming data from a wearable device to a server: a Android app for a data lab</span></h1>
+    <h1 class="title"><span itemprop="name">Upstreaming data from a wearable device to a server: an Android app for a data lab</span></h1>
     <!-- TALES added date of post & Structured data -->
     <div class="meta clearfix">
         <div class="date">
@@ -199,8 +199,8 @@
       </span>
       <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
         <a itemprop="url" href="http://lrnzcig.github.io/img/tom-Boiling-point-of-water-300px.png"></a>
-        <span itemprop="height">200</span>
-        <span itemprop="width">153</span>
+        <span itemprop="height">300</span>
+        <span itemprop="width">139</span>
       </span>
       <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
         <span itemprop="name">Sisifo's Page</span>
@@ -225,32 +225,31 @@
     is about an Android app!
     The point is, we've been for quite some time now preparing a data laboratory, and our intention is to buy pretty soon one or two dozens of wristbands,
     have some people wear them for a few hours a day, upstream all the data to a database in a server, and then analyze the data to find insights.</p>
-  <p>Everything you would need for building such a lab is pretty much available: there's several providers for the hardware of the wristband, which also give a Android
+  <p>Everything you would need for building such a lab is pretty much available: there's several providers for the hardware of the wristband, which also give an Android
     app to communicate with it. And Android itself has open and well documented libraries for nearly everything you need, thus it should be fairly easy to enhance the
-    provider's app should be an easy task. However, the sensors in the wristband produce an amount of data that is not negiglible, i.e. if you want
+    provider's app to your purpose. However, the sensors in the wristband produce an amount of data that is not negligible, i.e. if you want
     to process the raw data (commercial products pre-process the sensors' data in the hardware of the wristband, and only accumulated results go to the app in your
-    smartphone). Besides, upstreaming is not really so common in a Android development, at least not in a fast and continuous manner. So, it was
+    smartphone). Besides, upstreaming is not really so common in any Android development, at least not in a fast and continuous manner. Thus, finally it was
     not so easy to prepare the app for the lab, and that's why we thought it could make a hopefully interesting and useful post.</p>
   <p>This post aims to explain the details of such an app, with code snippets and links to the full solution, and being agnostic about the hardware.</p>
   <h3>A cache object and an upstream service</h3>
   <p>In this post you will find the description of two main objects of the app:</p>
   <ul>
-    <li>A cache object, a singleton class that stores the data from the wearable in an array in memory, so that the access is very fast.
+    <li>A cache object that stores the data from the wearable in an array in memory, so that the access is very fast.
       Periodically, the cache takes the elements from its buffers and stores them in a SQLite in-memory database</li>
     <li>An upstream service, which takes care of the communication with the server, and regularly uploading the data from the SQLite
       database into the server via a REST API</li>
   </ul>
-  <p>The full app, see <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStream">here</a> for the full code, contains several Android activities
     which handle the interaction with the user and the connection with the device. The cache is tightly linked to one of the activities, while the
-    communication with the server is implemented as an Android server. (Note that, in Android development, an activity runs in the foreground and serves
-    as the user's GUI, while a service implements something that the user does not see directly, but it is important for the app, see
+    communication with the server is implemented as an Android Service. (Note that, in Android development, an Activity runs in the foreground and serves
+    as the user's GUI, while a Service implements something that the user does not see directly, but it is important for the app, see
     <a href="https://developer.android.com/guide/components/processes-and-threads.html">here</a> for more details.)</p>
   <h4>The cache in detail, including code snippets</h4>
   <p>You can find the full implementation of the object <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/cache/AccDataCacheSingleton.java">here</a>.
     Main features follow as bullet list.</p>
   <ul>
     <li>It is implemented as a singleton, which means there is a unique instance of the object in the app -thus the unique and same instance may be
-      retreived from either the Activity handling the interaction with the user and the hardware, or from the Upstream Service</li>
+      retrieved from either the Activity handling the interaction with the user and the hardware, or from the Upstream Service</li>
   </ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">AccDataCacheSingleton</span> <span style="color: #666666">{</span>
 
@@ -266,15 +265,15 @@
         <span style="color: #008000; font-weight: bold">return</span> accDataCacheSingleton<span style="color: #666666">;</span>
     <span style="color: #666666">}</span>
   </pre></div>
-  <p>Additionally, the singleton has an initialization method, which has to be invoked only when the connection with the device is established.
+  <ul><li>Additionally, the singleton has an initialization method, which has to be invoked only when the connection with the device is established.
     In this method:
-    <ul style="padding-left:80px">
-      <li>The context of the Android activity is stored -will be used for establishing the connection with the SQLite database, and also in the service</li>
+    <ul>
+      <li>The context of the Android Activity is stored -will be used for establishing the connection with the SQLite database, and also in the Service</li>
       <li>Buffers are initialized</li>
       <li>Params of the connection are put into class variables</li>
       <li>The upstreaming service is created</li>
     </ul>
-  </p>
+  </li></ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">init</span><span style="color: #666666">(</span>Context context<span style="color: #666666">,</span> String macAddress<span style="color: #666666">)</span> <span style="color: #666666">{</span>
         <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #7D9029">context</span> <span style="color: #666666">=</span> context<span style="color: #666666">;</span>    <span style="color: #408080; font-style: italic">// expects that caller passes this.getBaseContext()</span>
 
@@ -297,7 +296,7 @@
   </pre></div>
   <ul>
     <li>The cache receives requests from the main activity to add data from the sensor. Note that these data come one by one, and at a relatively high
-      rate. For example, in the case of an accelerometer, it may be between 10 and 50 samples per second, each of them with the 3 coordinates. The
+      rate. For example, in the case of an accelerometer, it may be between 10 and 50 samples per second, each of them with the 3 position coordinates. The
       cache stores the data in a buffer and responds fast</li>
   </ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">synchronized</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">add</span><span style="color: #666666">(</span>FraaStreamDataUnit unit<span style="color: #666666">)</span> <span style="color: #666666">{</span>
@@ -309,9 +308,9 @@
         <span style="color: #666666">}</span>
     <span style="color: #666666">}</span>
   </pre></div>
-  <p>Additionally, when the buffer is full, the cache toggles to an second buffer for adding new data, and flushes the data of the first buffer into
-    the SQLite database. This is done through an asynchronous task, so that the activity does not have to wait for the database to finish.</p>
-  <p>This is the method that toggles the buffers when the active buffer gets full:</p>
+  <ul><li>Additionally, when the buffer is full, the cache toggles to a second buffer for adding new data, and flushes the data of the first buffer into
+    the SQLite database.
+    This is the method that toggles the buffers when the active buffer gets full:</li></ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Buffer</span> <span style="color: #666666">{</span>
           <span style="color: #008000; font-weight: bold">public</span> FraaStreamDataUnit<span style="color: #666666">[]</span> units<span style="color: #666666">;</span>
 
@@ -330,7 +329,8 @@
           unitsPointer <span style="color: #666666">=</span> <span style="color: #666666">0;</span>
       <span style="color: #666666">}</span>
   </pre></div>
-  <p>And the following method inserts the data of the full buffer into SQLite:</p>
+  <ul><li>While the following method, invoked after toggling, inserts the data of the full buffer into SQLite as an asynchronous task (thus the Activity does not
+    need to wait for it to finish):</li></ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">InsertIntoDatabaseTask</span> <span style="color: #008000; font-weight: bold">extends</span> AsyncTask<span style="color: #666666">&lt;</span>String<span style="color: #666666">,</span> Integer<span style="color: #666666">,</span> Integer<span style="color: #666666">&gt;</span> <span style="color: #666666">{</span>
         <span style="color: #AA22FF">@Override</span>
         <span style="color: #008000; font-weight: bold">protected</span> Integer <span style="color: #0000FF">doInBackground</span><span style="color: #666666">(</span>String<span style="color: #666666">...</span> params<span style="color: #666666">)</span> <span style="color: #666666">{</span>
@@ -361,7 +361,7 @@
     <li>Finally, it is important to note that the cache object handles every access to the SQLite database, also the ones that are required by
       the upstream service. That way, since all accesses are handled in a single object, contention can be avoided (since SQLite implementation
       in Android may fail in concurrent accesses). The access to the database is protected through a simple semaphore in our current
-      implementation:</li>
+      implementation, so that only one process can access it at a time:</li>
   </ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">final</span> Semaphore available <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Semaphore<span style="color: #666666">(1);</span>
 
@@ -370,29 +370,29 @@
         <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">FraaDbHelper</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #7D9029">context</span><span style="color: #666666">);</span>
     <span style="color: #666666">}</span>
   </pre></div>
-  <p>So that only one process can access at a time.</p>
   <h4>The upstream service in detail, including code snippets</h4>
   <p>The upstream service periodically uploads the available data into the server. As stated above, every time it needs to access the SQLite database,
-    it asks it to the instance of the cache object. Note that:</p>
+    it asks it to the cache object (a unique singleton instance). Note that:</p>
     <ul>
-      <li>The object extends an Android service, and only implements a few methods with the actual functionality. Hint: when you create a service,
+      <li>The object extends an Android Service, and only implements a few methods with the actual functionality. Hint: when you create a service,
         do it with Android Studio, so that the tools take care of the modifications to the manifest and gradle scripts</li>
       <li>The requests are done using <a href="https://developer.android.com/training/volley/index.html">volley</a>, a very handy Android library for
         REST accesses; however, since most of the common accesses are downstream (not upstream), the library is not as straightforward to use as in other
         cases. Still, it makes it pretty easy</li>
       <li>Since the cache is a singleton, the communication between the service and the cache is direct. The upstream service will get the instance of
-        the cache that the activity (handling user interaction and hardware) has created -anyhow it will never initialize it. Android uses an object called
-        Service Intent to communicate the activity to the server, but in this case it is not needed
+        the cache that the Activity has created -anyhow only the Activity, not the service, will initialize the cache.
+        (Recall that the Activity handles the interaction with the user an the hardware. Usually in Android, when communicating an Activity with a Service,
+        a Service Intent object is used, but in this case it is not needed)
     </ul>
   <p>You can find the full implementation of the object
-    <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/UpstreamService.java">here</a>
-    . Main features follow as bullet list.</p>
+    <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/UpstreamService.java">here</a>.
+    Main features follow as bullet list.</p>
   <ul>
     <li>The following method sends a bunch of data upstream to the server. It uses Google's <a href="https://github.com/google/gson">gson</a> for
       serialization. Most of the logic is implemented as a volley custom request (since it is upstream and with particular data type), following
       <a href="https://developer.android.com/training/volley/request-custom.html">this guidelines</a> and implemented in a generic object called
-      <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/GsonRequest.java">GsonRequest</a>
-      . Once this object is implemented, each of the requests just needs to describe what to do when the request is either successfull or fails</li>
+      <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/GsonRequest.java">GsonRequest</a>.
+      Once this object is implemented, each of the requests just needs to describe what to do when the request is either successful or fails</li>
   </ul>
   <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">sendToServer</span><span style="color: #666666">(</span>FraaStreamData data<span style="color: #666666">)</span> <span style="color: #666666">{</span>
         RequestQueue queue <span style="color: #666666">=</span> Volley<span style="color: #666666">.</span><span style="color: #7D9029">newRequestQueue</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">);</span>
@@ -422,15 +422,37 @@
         queue<span style="color: #666666">.</span><span style="color: #7D9029">add</span><span style="color: #666666">(</span>postRequest<span style="color: #666666">);</span>
     <span style="color: #666666">}</span>
   </pre></div>
-
-
-
-
-
-
-
-  TODO index smaller graph, moving divs around when tags are selected
-
+  <ul>
+    <li>Finally for the upstream service, find below the task that regularly checks if there is new data in the cache, and if there is, it adds
+      a new item to the list of pending requests. (Note that there is another scheduled task that actually sends the data upstream to the server)</li>
+  </ul>
+  <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">checkCacheDataStream</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+          <span style="color: #008000; font-weight: bold">final</span> Runnable checkData <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> Runnable<span style="color: #666666">()</span> <span style="color: #666666">{</span>
+              <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">run</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+                  AccDataCacheSingleton obj <span style="color: #666666">=</span> AccDataCacheSingleton<span style="color: #666666">.</span><span style="color: #7D9029">getInstance</span><span style="color: #666666">();</span>
+                  Collection<span style="color: #666666">&lt;</span>FraaStreamData<span style="color: #666666">&gt;</span> list <span style="color: #666666">=</span> convertWithMaxDataSize<span style="color: #666666">(</span>obj<span style="color: #666666">.</span><span style="color: #7D9029">selectRowsHeaderEqualTo</span><span style="color: #666666">(</span>getHeaderId<span style="color: #666666">()));</span>
+                  <span style="color: #B00040">boolean</span> dataPending <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">false</span><span style="color: #666666">;</span>
+                  <span style="color: #008000; font-weight: bold">for</span> <span style="color: #666666">(</span>FraaStreamData data <span style="color: #666666">:</span> list<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                      <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">(</span>data<span style="color: #666666">.</span><span style="color: #7D9029">getDataUnits</span><span style="color: #666666">().</span><span style="color: #7D9029">length</span> <span style="color: #666666">==</span> MAX_NUMBER_DATA_UNITS_UPSTREAM<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                          addDataToPendingRequests<span style="color: #666666">(</span>data<span style="color: #666666">);</span>
+                          dataPending <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">true</span><span style="color: #666666">;</span>
+                      <span style="color: #666666">}</span>
+                  <span style="color: #666666">}</span>
+                  <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">(</span>dataPending <span style="color: #666666">&amp;&amp;</span> dataProcessHandle<span style="color: #666666">.</span><span style="color: #7D9029">isCancelled</span><span style="color: #666666">())</span> <span style="color: #666666">{</span>
+                      Log<span style="color: #666666">.</span><span style="color: #7D9029">d</span><span style="color: #666666">(</span>StreamingActivity<span style="color: #666666">.</span><span style="color: #7D9029">TAG</span><span style="color: #666666">,</span> <span style="color: #BA2121">&quot;restarting data process&quot;</span><span style="color: #666666">);</span>
+                      checkDataEveryInterval<span style="color: #666666">();</span>
+                  <span style="color: #666666">}</span>
+              <span style="color: #666666">}</span>
+          <span style="color: #666666">};</span>
+          <span style="color: #408080; font-style: italic">// runs every 2 minutes, never stops</span>
+          <span style="color: #408080; font-style: italic">// TODO adjust time interval depending on size of buffers &amp; sampling rate</span>
+          cacheScheduler<span style="color: #666666">.</span><span style="color: #7D9029">scheduleAtFixedRate</span><span style="color: #666666">(</span>checkData<span style="color: #666666">,</span> <span style="color: #666666">0,</span> <span style="color: #666666">2,</span> TimeUnit<span style="color: #666666">.</span><span style="color: #7D9029">MINUTES</span><span style="color: #666666">);</span>
+      <span style="color: #666666">}</span>
+  </pre></div>
+  <h4>Note on the server</h4>
+  <p>You can find the full code <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStreamServer">here</a>.
+    The server just does enough to handle the REST requests and flush the data into a database. It is implemented in Java, using Hibernate for handling
+    the database. It uses maven to produce a war file, which may be deployed e.g. using tomcat.</p>
 
 
   </div><!-- main container -->
