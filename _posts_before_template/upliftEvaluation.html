@@ -282,7 +282,8 @@ mtext(&quot;recency control&quot;, side=3, line=-39, outer=TRUE, cex=2, font=2)<
                                                &quot;channel*history_segment&quot;,
                                                sep=&quot;+&quot;))</code></pre>
 <p>Let’s fit the logit model using <code>glmnet</code>.</p>
-<pre class="r"><code>require(glmnet)
+<pre class="r"><code>set.seed(1024)
+require(glmnet)
 logit.x.interactions &lt;- model.matrix(logit.formula.interactions, data=hc_rvtu)
 logit.z &lt;- hc_rvtu$z
 logit.y &lt;- hc_rvtu$y
