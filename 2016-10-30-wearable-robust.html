@@ -1,0 +1,358 @@
+<!-- TALES template header -->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!-- Microdata markup added by Google Structured Data Markup Helper. -->
+<html class="js inlinesvg">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
+    <title>Sisifo - Wearable data upstream</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"/>
+
+    <!-- Google Webfonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CPT+Serif:400,400italic' rel='stylesheet' type='text/css'/>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles-bluegreen.css" id="theme-styles"/>
+
+    <!--[if lt IE 9]>
+        <script src="modules/respond/html5-3.6-respond-1.1.0.min.js"></script>
+    <![endif]-->
+
+    <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>')</script>
+
+    <!-- end of TALES template header -->
+    <!-- ga pageview -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+      a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+      a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })
+    (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
+    var CLIENT_ID;
+
+    if (window.localStorage) {
+      ga('create', 'UA-75939736-1', 'auto', {
+        'storage': 'none',
+        'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
+      });
+      ga(function(tracker) {
+        localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
+      });
+      CLIENT_ID = localStorage.getItem(GA_LOCAL_STORAGE_KEY);
+    }
+    else {
+      ga('create', 'UA-75939736-1', 'auto');
+      CLIENT_ID = "no local storage"
+    }
+
+    ga('send', 'pageview', {
+      'dimension1': CLIENT_ID
+    });
+    </script>
+    <!-- end ga pageview -->
+
+
+<!-- R markdown title and rest of head tag -->
+<title>Upstreaming data from a wearable device to a server: making a robust Android app for the lab</title>
+
+</head>
+
+<!-- end of R markdown title and rest of head tag -->
+
+
+
+<!-- back to TALES template, close header and tab for body -->
+<body>
+
+  <header>
+      <div class="widewrapper masthead">
+          <div class="container">
+              <a href="index.html" id="logo">
+                  Sisifo's page
+                  <!--Use the following line instead if you want to use an image logo-->
+                  <!--<img src="img/tales-logo.png" alt="Tales Blog">-->
+              </a>
+
+              <div id="mobile-nav-toggle" class="pull-right">
+                  <a href="#" data-toggle="collapse" data-target=".tales-nav .navbar-collapse">
+                      <i class="fa fa-bars"></i>
+                  </a>
+              </div>
+
+              <nav class="pull-right tales-nav">
+                  <div class="collapse navbar-collapse">
+                      <ul class="nav nav-pills navbar-nav">
+                          <li>
+                              <a href="index.html">Blog</a>
+                          </li>
+                          <li>
+                              <a href="about.html">About</a>
+                          </li>
+                          <li>
+                              <a href="credits.html">Credits</a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+
+          </div>
+      </div>
+
+      <div class="widewrapper subheader">
+          <div class="container">
+              <div class="tales-breadcrumb">
+                  <a href="index.html">Blog</a>
+                  <span class="separator">&#x2F;</span>
+                  <a href="#">Wearable data robust app</a>
+              </div>
+
+              <div class="tales-searchbox">
+                  <form action="#" method="get" accept-charset="utf-8">
+                      <button class="searchbutton" type="submit">
+                          <i class="fa fa-search"></i>
+                      </button>
+                      <input class="searchfield" id="searchbox" type="text" placeholder="Search">
+                  </form>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- end of body header for TALES template, back to R markdown -->
+
+
+  <span itemscope itemtype="http://schema.org/Article">
+    <div class="container-fluid main-container">
+
+    <style type="text/css">
+    .main-container {
+      max-width: 940px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    code {
+      color: inherit;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+    img {
+      max-width:100%;
+      height: auto;
+    }
+    h1 {
+      font-size: 34px;
+    }
+    h1.title {
+      font-size: 38px;
+    }
+    h2 {
+      font-size: 30px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    h5 {
+      font-size: 16px;
+    }
+    h6 {
+      font-size: 12px;
+    }
+    .tabbed-pane {
+      padding-top: 12px;
+    }
+    button.code-folding-btn:focus {
+      outline: none;
+    }
+    </style>
+
+
+  <div class="fluid-row" id="header">
+
+    <h1 class="title"><span itemprop="name">Upstreaming data from a wearable device to a server: making a robust Android app for the lab</span></h1>
+    <!-- TALES added date of post & Structured data -->
+    <div class="meta clearfix">
+        <div class="date">
+            <i class="fa fa-calendar"></i>
+            <span itemprop="datePublished" content="2016-10-31" class="data">31 Oct 2016</span>
+        </div>
+    </div>
+    <span style="display: none"><!-- Structured Data -->
+      <span itemprop="author" itemtype="http://schema.org/Person">
+        <span itemprop="name">sisifospage@gmail.com</span>
+      </span>
+      <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <a itemprop="url" href="http://sisifospage.tech/img/strongmancontrol-300px.png"></a>
+        <span itemprop="height">156</span>
+        <span itemprop="width">300</span>
+      </span>
+      <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <span itemprop="name">Sisifo's Page</span>
+        <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+          <a itemprop="url" href="http://sisifospage.tech/img/Frankenstein-300px.png"></a>
+        </span>
+      </span>
+      <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, activity and service, Android Processes and Application Life Cycle</span></a></h3>
+      <span itemprop="dateModified" content="2016-10-31" class="meta">31 Oct 2016</span>
+      <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+        <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
+      </span>
+      <img src="http://sisifospage.tech/img/strongmancontrol-300px.png" alt="user" height="156" width="300">
+    </span>
+    <!-- end of TALES added date of post -->
+
+
+  </div>
+
+  <h3>Introduction &amp; purpose</h3>
+  <p>Two hectic months have passed since <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>, in which we focused on the Android app
+    we had prepared for a data laboratory for wearables. (The intention is still to do a small scale experiment with a number of wristbands, by the way.)
+    However, while trying to tune the Android app, we realized there was still some work to be done to make it robust -i.e. the app must keep on capturing data and sending
+    it upstream whatever happens in the smartphone, and regardless of how long it is since it was started. We figured we'd write a short(er) post, just focusing on what
+    to do to make the app more robust, also hoping that the hectic months will pass and we'll get some time to analyze the data (and post about it).</p>
+  <p>As usual, this post includes code snippets and links to the full solution available in <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStream">this github project</a>.</p>
+  <h3>Reorganizing the services</h3>
+  <p>Every Android developer must read and understand the details of <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">this link about the process lifecycle</a>
+  In the code as it is explained in our <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>, we actually made a mistake: we connected the wristband at the
+  Activity level; thus it was the activity which was doing the following tasks:</p>
+  <ul>
+    <li>Establishing the connection via Bluetooth, and reconnecting if the connection was lost</li>
+    <li>Recieving data from the wristband and, in a asynchronous process for each piece of data received, adding the piece into the cache object (i.e.
+      <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/cache/AccDataCacheSingleton.java">this object</a>)</li>
+  </ul>
+  <p>That would have been not such a bad decision if the user would always had the app open while the data was being captured. However, in the scenario for our experiment, and actually
+  in any scenario closer to real life, the user disregards the app completelly and just wears the app while they are doing any other thing. (Note anyhow that in any real life scenario, the
+  app would not upstream <i>all</i> the data, but only a pre-processed summary). Even for the lab, we want the users to forget about the app. What's the problem then? For whatever the reason (e.g.
+  if the smartphone is running out of resources) Android might decide to kill an Activity that the user is not looking at. Again from
+  <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">this link about the process lifecycle</a>, a <b>foreground process</b> <i>is one that is required for what
+    the user is currently doing</i> and they are not killed except <i>as a last resort if memory is so low that not even these processes can continue to run</i>. On the other hand, if a
+    <b>foreground process</b> stops being what the user is currently doing, e.g. because it is not in the foreground anymore, it will be killed when resources are needed -in practice, depending
+    on the smartphone of course, it will not stay alive very long.
+  </p>
+  <p>Conceptually, capturing data from the wristband would belong to a <b>service</b>, since <i>these processes are not directly visible to the user, they are generally doing things that the user
+    cares about (such as background mp3 playback or background network data upload or download), so the system will always keep such processes running unless there is not enough memory to retain
+    all foreground and visible process</i>. Again from the explanations in the <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">link about the process lifecycle</a>,
+    it is not easy at all to predict which processes will be killed first, so we experimented with it, and we came to the conclusion that, if the app is not the foreground, the services last longer,
+    and, even more, if they are killed eventually, Android ends up re-starting them eventually, since services are generally in the background doing things <i>that the user cares about</i>.
+    Thus the strategy for the app became:
+  </p>
+  <ul>
+    <li>Doing as little as possible in the Activity: just launching the order of capturing data from the wristband -which is actually the the only thing that the user does</li>
+    <li>Including a service for handling the communication with the wristband, which recieves the order to start from the activity</li>
+    <li>The rest of the objects take care of caching and upstreaming the data, as described in the <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">previous post</a></li>
+    <li>And very important, making sure that the services restart properly from any situation</li>
+  </ul>
+  <p>Let's review the integration points between each of the objects and how each of them behaves when Android restarts them</p>
+  <h4>From the Activity to the CacheService</h4>
+
+  <h4>Note on the server</h4>
+  <p>You can find the full code <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStreamServer">here</a>.
+    The server just does enough to handle the REST requests and flush the data into a database. It is implemented in Java, using Hibernate for handling
+    the database. It uses maven to produce a war file, which may be deployed e.g. using tomcat.</p>
+
+
+  </div><!-- main container -->
+</span><!-- article -->
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- disqus comments -->
+<div class="widewrapper main">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//sisifospage.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<!-- disqus comment count (?) -->
+<script id="dsq-count-scr" src="//sisifospage.disqus.com/count.js" async></script>
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- end disqus -->
+
+
+<!-- back to Thales to add footer -->
+<footer>
+    <div class="widewrapper footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-widget">
+                    <h3> <i class="fa fa-envelope"></i>Contact us</h3>
+
+                    <span>Happy to get any feedback:</span>
+
+                    <span class="email">
+                        <a href="#"><span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                              <span itemprop="name">sisifospage@gmail.com</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widewrapper copyright">
+        <div class="container">
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+        </div>
+    </div>
+</footer>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="modules/modernizr/modernizr-custom.js"></script>
+</body>
+</html>
