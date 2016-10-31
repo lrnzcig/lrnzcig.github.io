@@ -87,6 +87,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="index.html">Blog</a></li>
+                                    <li><a href="2016-10-30-wearable-robust.html">Wearable robust app</a></li>
                                     <li><a href="2016-08-09-wearable-data-upstream.html">Wearable data upstream</a></li>
                                     <li><a href="2016-06-10-infer-GA-sessions.html">Infer GA sessions</a></li>
                                     <li><a href="2016-05-03-association-rules.html">Arules clickstream</a></li>
@@ -130,11 +131,50 @@
                 <div class="col-md-8 blog-main">
                     <div class="row" id="row-1">
 
+                      <!-- Wearable robust -->
+                      <div class="col-md-6 col-sm-6" id="wearups-robust-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/strongmancontrol-300px.png" alt="Strong Man Control">
+                                  <h3><a href="2016-10-30-wearable-robust.html" id="wearrobust-title" >
+                                  <span itemprop="name">Upstreaming data from a wearable device to a server: making a robust Android app for the lab</span></a></h3>
+                                  <span itemprop="datePublished" content="2016-10-31" class="meta">31 Oct 2016</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/strongmancontrol-300px.png"></a>
+                                      <span itemprop="height">156</span>
+                                      <span itemprop="width">300</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                                      </span>
+                                    </span>
+                                    <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, activity and service, Android Processes and Application Life Cycle</span></a></h3>
+                                    <span itemprop="dateModified" content="2016-10-31" class="meta">31 Oct 2016</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  KK kk kksfadsjklñ kkkkkadfjlñadfs adfasdf, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later. Some features are not so common in an Android app implementation, e.g. a not negligible upstream of data. Includes detailed explanations and Java code.
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2016-10-30-wearable-robust.html" class="btn btn-tales-one" id="wearrobust-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
                       <!-- Wearable upstream -->
                       <div class="col-md-6 col-sm-6" id="wearupstream-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
                               <header>
-                                  <img src="img/tom-Boiling-point-of-water-200px.png" alt="User">
+                                  <img src="img/tom-Boiling-point-of-water-200px.png" alt="Boiling point of water">
                                   <h3><a href="2016-08-09-wearable-data-upstream.html" id="wearupstream-title" >
                                   <span itemprop="name">Upstreaming data from a wearable device to a server: a Android app for a data lab</span></a></h3>
                                   <span itemprop="datePublished" content="2016-08-09" class="meta">9 Aug 2016</span>
@@ -154,7 +194,7 @@
                                       </span>
                                     </span>
                                     <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, data lab, accelerometer data analysis</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-10-30" class="meta">30 Oct 2016</span>
+                                    <span itemprop="dateModified" content="2016-10-31" class="meta">31 Oct 2016</span>
                                     <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
                                     </span>
                                   </span>
@@ -168,6 +208,9 @@
                               </div>
                           </article>
                       </div>
+
+                    </div>
+                    <div class="row" id="row-2">
 
                       <!-- GA user ids -->
                       <div class="col-md-6 col-sm-6" id="gauserid-div">
@@ -208,9 +251,6 @@
                           </article>
                       </div>
 
-                    </div>
-                    <div class="row" id="row-2">
-
                       <!-- arules -->
                       <div class="col-md-6 col-sm-6" id="arules-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -249,6 +289,9 @@
                               </div>
                           </article>
                       </div>
+
+                    </div>
+                    <div class="row" id="row-3">
 
                       <!-- uplift -->
                       <div class="col-md-6 col-sm-6" id="uplift-div">
@@ -361,38 +404,45 @@
     var gauserid = document.getElementById('gauserid-div');
     var uplift = document.getElementById('uplift-div');
     var wearupstream = document.getElementById('wearupstream-div');
+    var wearrobust = document.getElementById('wearups-robust-div');
     function hideShowDivsForTags(tag_value) {
       if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = '';
         wearupstream.style.display = 'none';
+        wearrobust.style.display = 'none';
       } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = 'none';
         wearupstream.style.display = 'none';
-        $("#arules-div").detach().appendTo("#row-1");
+        wearrobust.style.display = 'none';
+        //$("#arules-div").detach().appendTo("#row-1");
       } else if (tag_value == "R") {
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = '';
         wearupstream.style.display = 'none';
-        $("#arules-div").detach().appendTo("#row-1");
+        wearrobust.style.display = 'none';
+        $("#arules-div").detach().prependTo("#row-2");
       } else if (tag_value == "Wearables" || tag_value == "Android app") {
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = 'none';
         wearupstream.style.display = '';
+        wearrobust.style.display = '';
       } else {
         // i.e. no tag has been clicked
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = '';
         wearupstream.style.display = '';
-        $("#gauserid-div").detach().appendTo("#row-1");
+        wearrobust.style.display = '';
+        $("#gauserid-div").detach().appendTo("#row-2");
         $("#wearupstream-div").detach().prependTo("#row-1");
-        $("#uplift-div").detach().appendTo("#row-2");
+        $("#wearups-robust-div").detach().prependTo("#row-1");
+        $("#uplift-div").detach().appendTo("#row-3");
         $("#arules-div").detach().prependTo("#row-2");
       }
     };
@@ -418,6 +468,8 @@
     var gt = document.getElementById('gauserid-title');
     var wc = document.getElementById('wearupstream-click');
     var wt = document.getElementById('wearupstream-title');
+    var wrc = document.getElementById('wearrobust-click');
+    var wrt = document.getElementById('wearrobust-title');
 
     uc.addEventListener('click', function() {
       ga('send', { hitType: 'event',
@@ -452,28 +504,42 @@
                    eventCategory: 'ReadMore',
                    eventAction: 'Click',
                    eventLabel: 'GASessionId',
-                   eventValue: 3 });
+                   eventValue: 5 });
     }, false);
     gt.addEventListener('click', function() {
       ga('send', { hitType: 'event',
                    eventCategory: 'Title',
                    eventAction: 'Click',
                    eventLabel: 'GASessionId',
-                   eventValue: 4 });
+                   eventValue: 6 });
     }, false);
     wc.addEventListener('click', function() {
       ga('send', { hitType: 'event',
                    eventCategory: 'ReadMore',
                    eventAction: 'Click',
                    eventLabel: 'WearUpstream',
-                   eventValue: 5 });
+                   eventValue: 7 });
     }, false);
     wt.addEventListener('click', function() {
       ga('send', { hitType: 'event',
                    eventCategory: 'Title',
                    eventAction: 'Click',
                    eventLabel: 'WearUpstream',
-                   eventValue: 6 });
+                   eventValue: 8 });
+    }, false);
+    wrc.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'ReadMore',
+                   eventAction: 'Click',
+                   eventLabel: 'WearUpsRobust',
+                   eventValue: 9 });
+    }, false);
+    wrt.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'Title',
+                   eventAction: 'Click',
+                   eventLabel: 'WearUpsRobust',
+                   eventValue: 10 });
     }, false);
     </script>
 </body>
