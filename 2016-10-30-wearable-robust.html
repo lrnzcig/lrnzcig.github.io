@@ -209,7 +209,7 @@
         </span>
       </span>
       <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, activity and service, Android Processes and Application Life Cycle</span></a></h3>
-      <span itemprop="dateModified" content="2016-10-31" class="meta">31 Oct 2016</span>
+      <span itemprop="dateModified" content="2016-11-01" class="meta">1 Nov 2016</span>
       <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
         <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
       </span>
@@ -224,33 +224,33 @@
   <p>Two hectic months have passed since <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>, in which we focused on the Android app
     we had prepared for a data laboratory for wearables. (The intention is still to do a small scale experiment with a number of wristbands, by the way.)
     However, while trying to tune the Android app, we realised there was still some work to be done to make it robust -i.e. the app must keep on capturing data and sending
-    it upstream whatever happens in the smartphone, and regardless of how long it is since it was started. We figured we'd write a short(er) post, just focusing on what
-    to do to make the app more robust, also hoping that the hectic months will pass and we'll get some time to analyse the data (and post about it).</p>
-  <p>As usual, this post includes code snippets and links to the full solution available in <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStream">this github project</a>.</p>
+    it upstream whatever happens in the smartphone, and regardless of how long it is since it was started. We figured we'd write an additional post, just focusing on what
+    to do to make the app more robust, also hoping that the hectic months will pass soon and we'll get some time to analyse the data (and post about it maybe).</p>
+  <p>As usual, this post includes code snippets and links to the full solution (available in <a href="https://github.com/lrnzcig/fraa/tree/master/FraaStream">this github project</a>).</p>
   <h3>Re-organizing the services</h3>
   <p>Every Android developer must read and understand the details of <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">this link about the process lifecycle</a>.
-  When we wrote our <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>, we had actually made a mistake: we connected the wristband at the
+  When we wrote our <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>, we had actually made a naive mistake: we connected the wristband at the
   Activity level; thus it was the activity which was doing the following tasks:</p>
   <ul>
     <li>Establishing the connection via Bluetooth, and reconnecting if the connection was lost</li>
-    <li>Receiving data from the wristband and, in a asynchronous process for each piece of data received, adding the piece of data into the cache object</li>
+    <li>Receiving data from the wristband and, in a asynchronous process, for each piece of data received, adding the piece of data into the cache object</li>
   </ul>
   <p>That would have been not such a bad decision if the user would always had the app open while the data was being captured. However, in the scenario for our experiment, and actually
-  in any scenario closer to real life, the user disregards the app completely and just wears the app while they are doing any other thing. (Note anyhow that in any real life scenario, the
-  app would not upstream <i>all</i> the data, but only a pre-processed summary).</p>
+  in any scenario closer to real life, the user disregards the app completely and just wears the wristband and the smartphone while they are doing any other thing. (Note anyhow that in
+  any real life scenario, the app would not upstream <i>all</i> the data, but only a pre-processed summary).</p>
   <p>Anyway, even for the lab, we want the users to forget about the app. What's the problem then? For whatever the reason (e.g.
   if the smartphone is running out of resources) Android might decide to kill any Activity that the user is not looking at. Again from
-  <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">this link about the process lifecycle</a>, a <b>foreground process</b> <i>is one that is required for what
+  <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">the link about the process lifecycle</a>, a <b>foreground process</b> <i>is one that is required for what
     the user is currently doing</i> and they are not killed except <i>as a last resort if memory is so low that not even these processes can continue to run</i>. On the other hand, if a
     <b>foreground process</b> stops being what the user is currently doing, e.g. because it is not in the foreground anymore, it will be killed when resources are needed -in practice, depending
-    on the smartphone of course, this means it will not stay alive very long.
+    on the smartphone of course, this means it will not stay alive forever.
   </p>
   <p>Conceptually, capturing data from the wristband would belong to a <b>service</b>, since <i>these processes are not directly visible to the user, they are generally doing things that the user
     cares about (such as background mp3 playback or background network data upload or download), so the system will always keep such processes running unless there is not enough memory to retain
     all foreground and visible process</i>. Again from the explanations in the <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">link about the process lifecycle</a>,
-    it is not easy at all to predict which processes will be killed first, so we experimented with it, and we came to the conclusion that, if the app is not the foreground, the services last longer.
-    More importantly, if an Activity is killed, it might not get resumed automatically if it is not in the foreground, while for the services, even if they get killed eventually, Android does re-start
-    them later, since services are generally in the background doing things <i>that the user cares about</i>.</p>
+    it is not easy at all to predict which processes will be killed first, so we experimented with it, and we came to the conclusion that, if the app is not the foreground, the services end up lasting
+    a longer time; more importantly, if an Activity is killed, it might not get resumed automatically if it is not in the foreground, while for the services, even if they get killed eventually, Android
+    does re-start them later, since services are generally in the background doing things <i>that the user cares about</i>.</p>
   <p>
     Thus the strategy for the app became:
   </p>
@@ -313,7 +313,7 @@
   <p>This service (full code <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/cache/CacheService.java">here</a>):</p>
   <ul>
     <li>Handles the streaming with the wristband</li>
-    <li>Adds the data into the singleton object (covered in detail in <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>, although in this one we'll see
+    <li>Adds the data into the singleton object (covered in detail in <a href="http://sisifospage.tech/2016-08-09-wearable-data-upstream.html">last post</a>; in this one we'll just see
       how it is restarted)</li>
   </ul>
   <p>First, when the service is (re-)started, the intent may or may not be present:</p>
@@ -383,7 +383,7 @@
   </pre></div>
   <h4>The UpstreamService</h4>
   <p>And finally this service (full code <a href="https://github.com/lrnzcig/fraa/blob/master/FraaStream/app/src/main/java/tech/sisifospage/fraastream/stream/UpstreamService.java">here</a>)
-    needs to take care of the situations in which it is re-started but the rest of the objects do not exist (it only needs to worry about its creator, the Cache Singleton):</p>
+    needs to take care of the situations in which it is re-started but the rest of the objects do not exist (actually, it only needs to worry about its creator, the Cache Singleton):</p>
     <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">private</span> AccDataCacheSingleton <span style="color: #0000FF">getCache</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
           AccDataCacheSingleton newCache <span style="color: #666666">=</span> AccDataCacheSingleton<span style="color: #666666">.</span><span style="color: #7D9029">getInstance</span><span style="color: #666666">();</span>
           <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">(</span>newCache <span style="color: #666666">==</span> <span style="color: #008000; font-weight: bold">null</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
@@ -400,7 +400,7 @@
       <span style="color: #666666">}</span>
     </pre></div>
   <h4>As a short conclusion</h4>
-  <p>Hopefully in this quick review you get the message that any object of the app may be killed or re-started in any other, and that every object needs to be robust enough so that it deals with
+  <p>Hopefully in this quick review you get the message that any object of the app may be killed or re-started in any order, and that every object needs to be robust enough so that it deals with
     the state of the rest of the objects. One last resort it that the object can kill itself, so that Android re-starts it and, hopefully, whatever was missing is present in the next start.</p>
 
 
