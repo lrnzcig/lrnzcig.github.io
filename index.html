@@ -87,6 +87,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="index.html">Blog</a></li>
+                                    <li><a href="2016-11-05-wearable-physical-activity.html">Wearable physical activity</a></li>
                                     <li><a href="2016-10-30-wearable-robust.html">Wearable robust app</a></li>
                                     <li><a href="2016-08-09-wearable-data-upstream.html">Wearable data upstream</a></li>
                                     <li><a href="2016-06-10-infer-GA-sessions.html">Infer GA sessions</a></li>
@@ -131,6 +132,45 @@
                 <div class="col-md-8 blog-main">
                     <div class="row" id="row-1">
 
+                      <!-- Wearable physical -->
+                      <div class="col-md-6 col-sm-6" id="wearphysical-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/johnny-automatic-spinning-a-top-200px.png" alt="Spinning a top">
+                                  <h3><a href="2016-11-05-wearable-physical-activity.html" id="wearphysical-title" >
+                                  <span itemprop="name">Wearables: measuring physical activity from accelerometer data</span></a></h3>
+                                  <span itemprop="datePublished" content="2016-11-05" class="data">5 Nov 2016</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/johnny-automatic-spinning-a-top-200px.png"></a>
+                                      <span itemprop="height">195</span>
+                                      <span itemprop="width">200</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                                      </span>
+                                    </span>
+                                    <span itemprop="headline" style="display: none">wearables, analysis, R code, detecting physical activity levels, acceleration signal vector magnitude</span></a></h3>
+                                    <span itemprop="dateModified" content="2016-11-05" class="data">5 Nov 2016</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  The very first analysis to try for the data coming from an accelerometer: measuring physical activity of the user. Actually, the simplest statictic measures already say a lot -in particular the standard deviation of the Signal Vector Magnitude (i.e. the modulus). It includes code in R and a dataset, so that it may be used as a tutorial.
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2016-11-05-wearable-physical-activity.html" class="btn btn-tales-one" id="wearphysical-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
                       <!-- Wearable robust -->
                       <div class="col-md-6 col-sm-6" id="wearups-robust-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -169,6 +209,9 @@
                               </div>
                           </article>
                       </div>
+
+                    </div>
+                    <div class="row" id="row-2">
 
                       <!-- Wearable upstream -->
                       <div class="col-md-6 col-sm-6" id="wearupstream-div">
@@ -209,9 +252,6 @@
                           </article>
                       </div>
 
-                    </div>
-                    <div class="row" id="row-2">
-
                       <!-- GA user ids -->
                       <div class="col-md-6 col-sm-6" id="gauserid-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -251,6 +291,10 @@
                           </article>
                       </div>
 
+
+                    </div>
+                    <div class="row" id="row-3">
+
                       <!-- arules -->
                       <div class="col-md-6 col-sm-6" id="arules-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -289,9 +333,6 @@
                               </div>
                           </article>
                       </div>
-
-                    </div>
-                    <div class="row" id="row-3">
 
                       <!-- uplift -->
                       <div class="col-md-6 col-sm-6" id="uplift-div">
@@ -342,22 +383,35 @@
                 </div>
                 <aside class="col-md-4 blog-aside">
 
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Tags</h3>
-                        </header>
-                        <div class="body clearfix">
-                            <ul class="tags" id="tags-ul">
-                                <li><a href="#">Uplift modeling</a></li>
-                                <li><a href="#">R</a></li>
-                                <li><a href="#">Business evaluation</a></li>
-                                <li><a href="#">Association Rules</a></li>
-                                <li><a href="#">Google Analytics</a></li>
-                                <li><a href="#">Wearables</a></li>
-                                <li><a href="#">Android app</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                  <div class="aside-widget">
+                      <header>
+                          <h3>Favorites (says Google Analytics)</h3>
+                      </header>
+                      <div class="body">
+                          <ul class="tales-list">
+                              <li><a href="2016-04-01-uplift-evaluation.html">Cost/benefit evaluation of Uplift Modeling with an example in R</a></li>
+                              <li><a href="2016-05-03-association-rules.html">Association Rules applied to Google Analytics data for insights on the structure of a web site</a></li>
+                          </ul>
+                      </div>
+                  </div>
+
+
+                  <div class="aside-widget">
+                      <header>
+                          <h3>Tags</h3>
+                      </header>
+                      <div class="body clearfix">
+                          <ul class="tags" id="tags-ul">
+                              <li><a href="#">Uplift modeling</a></li>
+                              <li><a href="#">R</a></li>
+                              <li><a href="#">Business evaluation</a></li>
+                              <li><a href="#">Association Rules</a></li>
+                              <li><a href="#">Google Analytics</a></li>
+                              <li><a href="#">Wearables</a></li>
+                              <li><a href="#">Android app</a></li>
+                          </ul>
+                      </div>
+                  </div>
                 </aside>
             </div>
         </div>
@@ -405,6 +459,7 @@
     var uplift = document.getElementById('uplift-div');
     var wearupstream = document.getElementById('wearupstream-div');
     var wearrobust = document.getElementById('wearups-robust-div');
+    var wearphysical = document.getElementById('wearphysical-div');
     function hideShowDivsForTags(tag_value) {
       if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
         arules.style.display = 'none';
@@ -412,26 +467,38 @@
         uplift.style.display = '';
         wearupstream.style.display = 'none';
         wearrobust.style.display = 'none';
+        wearphysical.style.display = 'none';
       } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = 'none';
         wearupstream.style.display = 'none';
         wearrobust.style.display = 'none';
-        //$("#arules-div").detach().appendTo("#row-1");
+        wearphysical.style.display = 'none';
+        $("#arules-div").detach().appendTo("#row-2");
       } else if (tag_value == "R") {
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = '';
         wearupstream.style.display = 'none';
         wearrobust.style.display = 'none';
-        $("#arules-div").detach().prependTo("#row-2");
-      } else if (tag_value == "Wearables" || tag_value == "Android app") {
+        wearphysical.style.display = '';
+        $("#gauserid-div").detach().appendTo("#row-1");
+      } else if (tag_value == "Wearables") {
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = 'none';
         wearupstream.style.display = '';
         wearrobust.style.display = '';
+        wearphysical.style.display = '';
+      } else if (tag_value == "Android app") {
+        arules.style.display = 'none';
+        gauserid.style.display = 'none';
+        uplift.style.display = 'none';
+        wearupstream.style.display = '';
+        wearrobust.style.display = '';
+        wearphysical.style.display = 'none';
+        $("#wearupstream-div").detach().appendTo("#row-1");
       } else {
         // i.e. no tag has been clicked
         arules.style.display = '';
@@ -439,11 +506,13 @@
         uplift.style.display = '';
         wearupstream.style.display = '';
         wearrobust.style.display = '';
+        wearphysical.style.display = '';
+        $("#wearphysical-div").detach().appendTo("#row-1");
+        $("#wearups-robust-div").detach().appendTo("#row-1");
+        $("#wearupstream-div").detach().appendTo("#row-2");
         $("#gauserid-div").detach().appendTo("#row-2");
-        $("#wearupstream-div").detach().prependTo("#row-1");
-        $("#wearups-robust-div").detach().prependTo("#row-1");
+        $("#arules-div").detach().appendTo("#row-3");
         $("#uplift-div").detach().appendTo("#row-3");
-        $("#arules-div").detach().prependTo("#row-2");
       }
     };
 
@@ -470,6 +539,8 @@
     var wt = document.getElementById('wearupstream-title');
     var wrc = document.getElementById('wearrobust-click');
     var wrt = document.getElementById('wearrobust-title');
+    var wpc = document.getElementById('wearphysical-click');
+    var wpt = document.getElementById('wearphysical-title');
 
     uc.addEventListener('click', function() {
       ga('send', { hitType: 'event',
@@ -540,6 +611,20 @@
                    eventAction: 'Click',
                    eventLabel: 'WearUpsRobust',
                    eventValue: 10 });
+    }, false);
+    wpc.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'ReadMore',
+                   eventAction: 'Click',
+                   eventLabel: 'WearPhysical',
+                   eventValue: 11 });
+    }, false);
+    wpt.addEventListener('click', function() {
+      ga('send', { hitType: 'event',
+                   eventCategory: 'Title',
+                   eventAction: 'Click',
+                   eventLabel: 'WearPhysical',
+                   eventValue: 12 });
     }, false);
     </script>
 </body>
