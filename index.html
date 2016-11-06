@@ -156,14 +156,14 @@
                                       </span>
                                     </span>
                                     <span itemprop="headline" style="display: none">wearables, analysis, R code, detecting physical activity levels, acceleration signal vector magnitude</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-11-05" class="data">5 Nov 2016</span>
+                                    <span itemprop="dateModified" content="2016-11-06" class="data">6 Nov 2016</span>
                                     <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
                                     </span>
                                   </span>
                                   <hr>
                               </header>
                               <div class="body">
-                                  The very first analysis to try for the data coming from an accelerometer: measuring physical activity of the user. Actually, the simplest statictic measures already say a lot -in particular the standard deviation of the Signal Vector Magnitude (i.e. the modulus). It includes code in R and a dataset, so that it may be used as a tutorial.
+                                  The very first analysis to try for the data coming from an accelerometer: measuring the physical activity of the user. Actually, the simplest statictic measures already tell a lot -in particular the standard deviation of the Signal Vector Magnitude (i.e. the modulus). It includes code in R and a dataset, so that it may be used as a tutorial.
                               </div>
                               <div class="clearfix">
                                   <a href="2016-11-05-wearable-physical-activity.html" class="btn btn-tales-one" id="wearphysical-click">Read more</a>
@@ -376,9 +376,9 @@
                     </div>
 
                     <div class="paging">
-                        <a href="#" class="newer"><i class="fa fa-long-arrow-left"></i> Newer</a>
+                        <a href="#" class="newer" id="newer"><i class="fa fa-long-arrow-left"></i> Newer</a>
                          <span>&bull;</span>
-                        <a href="#" class="older">Older <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#" class="older" id="older">Older <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                 </div>
                 <aside class="col-md-4 blog-aside">
@@ -446,6 +446,28 @@
     <script src="modules/modernizr/modernizr-custom.js"></script>
 
     <script>
+    // define rows and set to initial state
+    var row1 = document.getElementById('row-1');
+    var row2 = document.getElementById('row-2');
+    var row3 = document.getElementById('row-3');
+    row3.style.display = 'none';
+
+    // manage "newer" and "older" buttons
+    var older = document.getElementById('older');
+    older.addEventListener('click', function() {
+      if (typeof tag_value == "undefined") {
+        row1.style.display = 'none';
+        row3.style.display = '';
+      }
+    }, false);
+    var newer = document.getElementById('newer');
+    newer.addEventListener('click', function() {
+      if (typeof tag_value == "undefined") {
+        row1.style.display = '';
+        row3.style.display = 'none';
+      }
+    }, false);
+
     // TAGS
     function getEventTarget(e) {
       // gets the targeted li
@@ -462,6 +484,7 @@
     var wearphysical = document.getElementById('wearphysical-div');
     function hideShowDivsForTags(tag_value) {
       if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
+        row3.style.display = '';
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = '';
@@ -469,6 +492,7 @@
         wearrobust.style.display = 'none';
         wearphysical.style.display = 'none';
       } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
+        row3.style.display = '';
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = 'none';
@@ -477,6 +501,7 @@
         wearphysical.style.display = 'none';
         $("#arules-div").detach().appendTo("#row-2");
       } else if (tag_value == "R") {
+        row3.style.display = '';
         arules.style.display = '';
         gauserid.style.display = '';
         uplift.style.display = '';
@@ -485,6 +510,7 @@
         wearphysical.style.display = '';
         $("#gauserid-div").detach().appendTo("#row-1");
       } else if (tag_value == "Wearables") {
+        row3.style.display = 'none';
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = 'none';
@@ -492,6 +518,7 @@
         wearrobust.style.display = '';
         wearphysical.style.display = '';
       } else if (tag_value == "Android app") {
+        row3.style.display = 'none';
         arules.style.display = 'none';
         gauserid.style.display = 'none';
         uplift.style.display = 'none';
@@ -511,6 +538,7 @@
         $("#wearups-robust-div").detach().appendTo("#row-1");
         $("#wearupstream-div").detach().appendTo("#row-2");
         $("#gauserid-div").detach().appendTo("#row-2");
+        row3.style.display = 'none';
         $("#arules-div").detach().appendTo("#row-3");
         $("#uplift-div").detach().appendTo("#row-3");
       }
