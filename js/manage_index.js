@@ -15,10 +15,16 @@ function initTagsGAButtons() {
     lastClicked = target.innerHTML;
   }).on("focusout", function() {
     lastClicked = '';
-    // timeout to avoid a glitch when clicked to a different tag
-    window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
   });
 
+  $(document).click(function(event) {
+    if (lastClicked == '') {
+      // timeout to avoid a glitch when clicked to a different tag
+      window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);      
+    }
+  });
+
+  // event listeners for google analytics
   uc.addEventListener('click', function() {
     ga('send', { hitType: 'event',
     eventCategory: 'ReadMore',
@@ -138,6 +144,7 @@ function hideShowDivsForTags(tag_value) {
     wearupstream.style.display = 'none';
     wearrobust.style.display = 'none';
     wearphysical.style.display = 'none';
+    $("#uplift-div").detach().appendTo("#row-3");
   } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
     row1.style.display = '';
     row2.style.display = '';
@@ -148,6 +155,7 @@ function hideShowDivsForTags(tag_value) {
     wearupstream.style.display = 'none';
     wearrobust.style.display = 'none';
     wearphysical.style.display = 'none';
+    $("#gauserid-div").detach().appendTo("#row-2");
     $("#arules-div").detach().appendTo("#row-2");
   } else if (tag_value == "R") {
     row1.style.display = '';
@@ -159,7 +167,10 @@ function hideShowDivsForTags(tag_value) {
     wearupstream.style.display = 'none';
     wearrobust.style.display = 'none';
     wearphysical.style.display = '';
+    $("#wearphysical-div").detach().appendTo("#row-1");
     $("#gauserid-div").detach().appendTo("#row-1");
+    $("#arules-div").detach().appendTo("#row-2");
+    $("#uplift-div").detach().appendTo("#row-2");
   } else if (tag_value == "Wearables") {
     row1.style.display = '';
     row2.style.display = '';
@@ -170,6 +181,9 @@ function hideShowDivsForTags(tag_value) {
     wearupstream.style.display = '';
     wearrobust.style.display = '';
     wearphysical.style.display = '';
+    $("#wearphysical-div").detach().appendTo("#row-1");
+    $("#wearups-robust-div").detach().appendTo("#row-1");
+    $("#wearupstream-div").detach().appendTo("#row-2");
   } else if (tag_value == "Android app") {
     row1.style.display = '';
     row2.style.display = '';
@@ -180,6 +194,7 @@ function hideShowDivsForTags(tag_value) {
     wearupstream.style.display = '';
     wearrobust.style.display = '';
     wearphysical.style.display = 'none';
+    $("#wearups-robust-div").detach().appendTo("#row-1");
     $("#wearupstream-div").detach().appendTo("#row-1");
   } else {
     // i.e. no tag has been clicked
