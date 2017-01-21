@@ -179,6 +179,7 @@ $(document).ready(function () {
 <li><p>by using a sliding window of 75 samples, so that each sample actually appears in 75 windows, on a different position in each of them (i.e. as the 1st input, or the 2nd, 3rd, etc)</p></li>
 </ol>
 <p>First sight the second approach would look like a better idea, since it would be more similar to a real scenario, however convergence will be by far more difficult, since the inputs will be quite correlated. Thus, to keep it simple, let’s stick to the first approach.</p>
+<p>Finally, the activation function which shows fastest is the hyperbolic tangent (as predicted by the same paper). Accordingly, the values of the binary outputs are set to [-1, 1].</p>
 </div>
 </div>
 <div id="summary-of-results" class="section level3">
@@ -199,8 +200,8 @@ cm.base</code></pre>
 <pre class="r"><code>getFBetaScore(cm.base)</code></pre>
 <pre><code>## [1] 0.738808482</code></pre>
 <p>Thus the accuracy of the baseline is around 68%, with quite a high rate of false positives (i.e. the detector says that the subject is sleeping, just because the level of activity is low). The F1 score of 0.74.</p>
-<p>For the most simple neural net, with one output neuron (which behaves quite like logistic regression) the accuracy for the test set is 60% and the F1 score is 0.51 (see R code below). However, for a neural network of 1 hidden layer of 6 neurons, which still takes just a few minutes to train, the accuracy for the test set is of about 76%, while the F1 score is 0.76 -i.e. already much better than the baseline.</p>
-<p>A larger neural net, with 2 hidden layers, the 1st with 12 neurons and the 2nd with 3, takes hours to train and gives XX% of accuracy with a F1 score of 0.XX.</p>
+<p>For the most simple neural net, with one output neuron (which behaves quite like logistic regression) the accuracy for the test set is 60% and the F1 score is 0.51 (see R code below). However, for a neural network of 1 hidden layer of 6 neurons, which still takes just a few minutes to train, the accuracy for the test set is of about 71%, while the F1 score is 0.76 -i.e. already much better than the baseline. However this model already shows overfitting, see discussion below.</p>
+<p>A larger neural net, with 2 hidden layers, the 1st with 12 neurons and the 2nd with 3, takes much more time to train but it does not get significantly better results (see paragraph on Variance below).</p>
 </div>
 <div id="question-was-it-simple-andor-useful" class="section level3">
 <h3>Question: was it simple and/or useful?</h3>
@@ -211,8 +212,8 @@ cm.base</code></pre>
 <h3>Next steps for a finer analysis</h3>
 <div id="variance" class="section level4">
 <h4>Variance</h4>
-<p>When increasing little by little the complexity of the model (i.e. reducing bias), we were taking the risk to overfit. From the difference of the accuracy/F1 score between the training and the test data there was not a hint that there could be overfitting, since it was relatively small for most trials.</p>
-<p>Even more, the model could be at the same time suffering from high variance (i.e. even with high bias) which could be solved with more training data. In some trials we constructed the windows of samples as a sliding window (explained above), and the accuracy results for the model were significantly better, at the cost of convergence speed. Definitively, the results should improve with more fresh input data.</p>
+<p>When increasing little by little the complexity of the model (i.e. reducing bias), we were taking the risk to overfit. From the difference of the accuracy/F1 score between the training and the test data there is a clear hint that there is overfitting. In the model with 2 hidden layers (12 &amp; 3 neurons respectively), the F1 score of the training set is 0.93, while for the test set is 0.75.</p>
+<p>Even in models with relatively higher bias, the model seems to be already suffering from high variance, which could be solved with more training data. In some trials we constructed the windows of samples as a sliding window (explained above), and the accuracy results for the model were significantly better, at the cost of convergence speed. Definitively, the results should improve with more fresh input data.</p>
 </div>
 <div id="window-size" class="section level4">
 <h4>Window size</h4>
