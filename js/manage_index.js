@@ -11,18 +11,20 @@ function initTagsGAButtons() {
   var lastClicked;
   $('#tags-ul').on("click", function(event) {
     // timeout to avoid a glitch when clicked to a different tag
-    window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
+    //window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
     var target = getEventTarget(event);
     hideShowDivsForTags(target.innerHTML);
     lastClicked = target.innerHTML;
   }).on("focusout", function() {
     lastClicked = '';
+    // timeout to avoid a glitch when clicked to a different tag
+    window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
   });
 
   $(document).click(function(event) {
     if (lastClicked == '') {
       // timeout to avoid a glitch when clicked to a different tag
-      window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
+      //window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
     }
   });
 
