@@ -249,7 +249,7 @@ $(document).ready(function () {
       </span>
     </span>
     <span itemprop="headline" style="display: none">apply neural network to time series, R code, detecting physical activity levels, accelerator data, wearables, neural net</span></a></h3>
-    <span itemprop="dateModified" content="2017-01-22" class="meta">22 Jan 2016</span>
+    <span itemprop="dateModified" content="2017-01-29" class="meta">29 Jan 2016</span>
     <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
       <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
     </span>
@@ -354,7 +354,7 @@ cm.base</code></pre>
 <div id="variance" class="section level4">
 <h4>Variance</h4>
 <p>When increasing little by little the complexity of the model (i.e. reducing bias), we were taking the risk to overfit. From the difference of the accuracy/F1 score between the training and the test data there is a clear hint that there is overfitting. In the model with 2 hidden layers of 12 &amp; 3 neurons respectively, the F1 score of the training set is 0.93, while for the test set is 0.72.</p>
-<p>Even in models with relatively higher bias, the model seems to be already suffering from high variance, which could be solved with more training data. In some trials we constructed the windows of samples as a sliding window (explained above), and the accuracy results for the model were significantly better, at the cost of convergence speed. Definitively, the results should improve with more fresh input data.</p>
+<p>Even in models with relatively higher bias, the model seems to be already suffering from high variance, which could be solved with either more training data or by using regularization. In some trials we constructed the windows of samples as a sliding window (explained above), and the accuracy results for the model were significantly better, at the cost of convergence speed. Definitively, the results should improve with more fresh input data, while it makes sense to tune for regularization (<code>decay</code> parameter in <code>neuralnet</code>).</p>
 </div>
 <div id="window-size" class="section level4">
 <h4>Window size</h4>
