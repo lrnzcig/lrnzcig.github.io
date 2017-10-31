@@ -18,7 +18,7 @@ function initTagsGAButtons() {
   }).on("focusout", function() {
     lastClicked = '';
     // timeout to avoid a glitch when clicked to a different tag
-    window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
+    window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 200);
   });
 
   $(document).click(function(event) {
@@ -117,15 +117,29 @@ function initTagsGAButtons() {
     ga('send', { hitType: 'event',
     eventCategory: 'ReadMore',
     eventAction: 'Click',
-    eventLabel: 'WearPhysical',
-    eventValue: 11 });
+    eventLabel: 'NeuralNet',
+    eventValue: 13 });
   }, false);
   tnt.addEventListener('click', function() {
     ga('send', { hitType: 'event',
     eventCategory: 'Title',
     eventAction: 'Click',
-    eventLabel: 'WearPhysical',
-    eventValue: 12 });
+    eventLabel: 'NeuralNet',
+    eventValue: 14 });
+  }, false);
+  clc.addEventListener('click', function() {
+    ga('send', { hitType: 'event',
+    eventCategory: 'ReadMore',
+    eventAction: 'Click',
+    eventLabel: 'ClusterDTW',
+    eventValue: 15 });
+  }, false);
+  clt.addEventListener('click', function() {
+    ga('send', { hitType: 'event',
+    eventCategory: 'Title',
+    eventAction: 'Click',
+    eventLabel: 'ClusterDTW',
+    eventValue: 16 });
   }, false);
 
 };
@@ -181,11 +195,12 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = 'none';
     wearphysical.style.display = 'none';
     timeseriesnn.style.display = 'none';
+    clusteringdtw.style.display = 'none';
     $("#uplift-div").detach().appendTo("#row-4");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
-    row1.style.display = '';
+    row1.style.display = 'none';
     row2.style.display = '';
     row3.style.display = 'none';
     row4.style.display = 'none';
@@ -196,6 +211,7 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = 'none';
     wearphysical.style.display = 'none';
     timeseriesnn.style.display = 'none';
+    clusteringdtw.style.display = 'none';
     $("#gauserid-div").detach().appendTo("#row-2");
     $("#arules-div").detach().appendTo("#row-2");
     older.style.visibility = 'hidden';
@@ -212,10 +228,12 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = 'none';
     wearphysical.style.display = '';
     timeseriesnn.style.display = '';
+    clusteringdtw.style.display = '';
+    $("#clusteringdtw-div").detach().appendTo("#row-1");
     $("#timeseriesnn-div").detach().appendTo("#row-1");
-    $("#wearphysical-div").detach().appendTo("#row-1");
+    $("#wearphysical-div").detach().appendTo("#row-2");
     $("#gauserid-div").detach().appendTo("#row-2");
-    $("#arules-div").detach().appendTo("#row-2");
+    $("#arules-div").detach().appendTo("#row-3");
     $("#uplift-div").detach().appendTo("#row-3");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
@@ -231,6 +249,7 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = '';
     wearphysical.style.display = '';
     timeseriesnn.style.display = '';
+    clusteringdtw.style.display = 'none';
     $("#timeseriesnn-div").detach().appendTo("#row-1");
     $("#wearphysical-div").detach().appendTo("#row-1");
     $("#wearups-robust-div").detach().appendTo("#row-2");
@@ -239,7 +258,7 @@ function hideShowDivsForTags(tag_value) {
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Android app") {
     row1.style.display = '';
-    row2.style.display = '';
+    row2.style.display = 'none';
     row3.style.display = 'none';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
@@ -248,13 +267,14 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = '';
     wearphysical.style.display = 'none';
     timeseriesnn.style.display = 'none';
+    clusteringdtw.style.display = 'none';
     $("#wearups-robust-div").detach().appendTo("#row-1");
     $("#wearupstream-div").detach().appendTo("#row-1");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Neural network") {
     row1.style.display = '';
-    row2.style.display = '';
+    row2.style.display = 'none';
     row3.style.display = 'none';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
@@ -263,7 +283,23 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = 'none';
     wearphysical.style.display = 'none';
     timeseriesnn.style.display = '';
+    clusteringdtw.style.display = 'none';
     $("#timeseriesnn-robust-div").detach().appendTo("#row-1");
+    older.style.visibility = 'hidden';
+    newer.style.visibility = 'hidden';
+  } else if (tag_value == "Clustering") {
+    row1.style.display = '';
+    row2.style.display = 'none';
+    row3.style.display = 'none';
+    arules.style.display = 'none';
+    gauserid.style.display = 'none';
+    uplift.style.display = 'none';
+    wearupstream.style.display = 'none';
+    wearrobust.style.display = 'none';
+    wearphysical.style.display = 'none';
+    timeseriesnn.style.display = 'none';
+    clusteringdtw.style.display = '';
+    $("#clusteringdtw-robust-div").detach().appendTo("#row-1");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else {
@@ -279,12 +315,14 @@ function hideShowDivsForTags(tag_value) {
     wearrobust.style.display = '';
     wearphysical.style.display = '';
     timeseriesnn.style.display = '';
+    clusteringdtw.style.display = '';
+    $("#clusteringdtw-div").detach().appendTo("#row-1");
     $("#timeseriesnn-div").detach().appendTo("#row-1");
-    $("#wearphysical-div").detach().appendTo("#row-1");
+    $("#wearphysical-div").detach().appendTo("#row-2");
     $("#wearups-robust-div").detach().appendTo("#row-2");
-    $("#wearupstream-div").detach().appendTo("#row-2");
+    $("#wearupstream-div").detach().appendTo("#row-3");
     $("#gauserid-div").detach().appendTo("#row-3");
-    $("#arules-div").detach().appendTo("#row-3");
+    $("#arules-div").detach().appendTo("#row-4");
     $("#uplift-div").detach().appendTo("#row-4");
     older.style.visibility = 'visible';
     newer.style.visibility = 'hidden';
@@ -304,6 +342,7 @@ var wearupstream = document.getElementById('wearupstream-div');
 var wearrobust = document.getElementById('wearups-robust-div');
 var wearphysical = document.getElementById('wearphysical-div');
 var timeseriesnn = document.getElementById('timeseriesnn-div');
+var clusteringdtw = document.getElementById('clusteringdtw-div');
 // GA events
 var uc = document.getElementById('uplift-click');
 var ut = document.getElementById('uplift-title');
@@ -319,6 +358,8 @@ var wpc = document.getElementById('wearphysical-click');
 var wpt = document.getElementById('wearphysical-title');
 var tnc = document.getElementById('timeseriesnn-click');
 var tnt = document.getElementById('timeseriesnn-title');
+var clc = document.getElementById('clusteringdtw-click');
+var clt = document.getElementById('clusteringdtw-title');
 
 // initial state
 row3.style.display = 'none';

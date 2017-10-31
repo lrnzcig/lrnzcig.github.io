@@ -87,6 +87,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="index.html">Blog</a></li>
+                                    <li><a href="2017-05-15-time-series-clustering-pulsi.html">DTW Clustering time series</a></li>
                                     <li><a href="2017-01-07-time-series-neural-net.html">Time series neural net</a></li>
                                     <li><a href="2016-11-05-wearable-physical-activity.html">Wearable physical activity</a></li>
                                     <li><a href="2016-10-30-wearable-robust.html">Wearable robust app</a></li>
@@ -133,6 +134,45 @@
                 <div class="col-md-8 blog-main">
                     <div class="row" id="row-1">
 
+                      <!-- Clustering DTW time series -->
+                      <div class="col-md-6 col-sm-6" id="clusteringdtw-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/EKG-Realistic-Heart-300px.png" alt="EKG Realistic Heart">
+                                  <h3><a href="2017-05-15-time-series-clustering-pulsi.html" id="clusteringdtw-title" >
+                                  <span itemprop="name">Clustering time series using DTW: pulsioximeter data</span></a></h3>
+                                  <span itemprop="datePublished" content="2017-05-21" class="data">21 May 2017</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/EKG-Realistic-Heart-300px.png"></a>
+                                      <span itemprop="height">82</span>
+                                      <span itemprop="width">288</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                                      </span>
+                                    </span>
+                                    <span itemprop="headline" style="display: none">apply clustering to time series using Dynamic Time Warping, R code, Dynamic Time Warping for pulsioximeter data, DTW, pulsioximeter dataset</span></a></h3>
+                                    <span itemprop="dateModified" content="2017-05-21" class="meta">21 May 2017</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  Using now data from a pulsioximeter (instead of the accelerometer of previous posts), anyhow generating a big amount time series -the device is switched on every night with a patient, and for comparison a few nights from a healthier person are added. As a step of an initial exploratory analysis of the set of time series, the objective is to perform a clustering of a dataset of time series, using Dynamic Time Warping as the distance measure. It includes code in R and a dataset, so that it may be used as a tutorial.
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2017-01-07-time-series-neural-net.html" class="btn btn-tales-one" id="clusteringdtw-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
                       <!-- Time series neural net -->
                       <div class="col-md-6 col-sm-6" id="timeseriesnn-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -171,6 +211,9 @@
                               </div>
                           </article>
                       </div>
+
+                    </div>
+                    <div class="row" id="row-2">
 
                       <!-- Wearable physical -->
                       <div class="col-md-6 col-sm-6" id="wearphysical-div">
@@ -211,9 +254,6 @@
                           </article>
                       </div>
 
-                    </div>
-                    <div class="row" id="row-2">
-
                       <!-- Wearable robust -->
                       <div class="col-md-6 col-sm-6" id="wearups-robust-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -252,6 +292,9 @@
                               </div>
                           </article>
                       </div>
+
+                    </div>
+                    <div class="row" id="row-3">
 
                       <!-- Wearable upstream -->
                       <div class="col-md-6 col-sm-6" id="wearupstream-div">
@@ -292,9 +335,6 @@
                           </article>
                       </div>
 
-                    </div>
-                    <div class="row" id="row-3">
-
                       <!-- GA user ids -->
                       <div class="col-md-6 col-sm-6" id="gauserid-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -334,6 +374,10 @@
                           </article>
                       </div>
 
+                    </div>
+
+                    <div class="row" id="row-4">
+
                       <!-- arules -->
                       <div class="col-md-6 col-sm-6" id="arules-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -372,10 +416,6 @@
                               </div>
                           </article>
                       </div>
-
-                    </div>
-
-                    <div class="row" id="row-4">
 
                       <!-- uplift -->
                       <div class="col-md-6 col-sm-6" id="uplift-div">
@@ -434,6 +474,7 @@
                           <ul class="tales-list">
                               <li><a href="2016-04-01-uplift-evaluation.html">Cost/benefit evaluation of Uplift Modeling with an example in R</a></li>
                               <li><a href="2016-05-03-association-rules.html">Association Rules applied to Google Analytics data for insights on the structure of a web site</a></li>
+                              <li><a href="2016-06-10-infer-GA-sessions.html">Google Analytics: how to figure out sessions when a custom user id is not set</a></li>
                           </ul>
                       </div>
                   </div>
@@ -453,6 +494,7 @@
                               <li><a href="#">Wearables</a></li>
                               <li><a href="#">Android app</a></li>
                               <li><a href="#">Neural network</a></li>
+                              <li><a href="#">Clustering</a></li>
                           </ul>
                       </div>
                   </div>
