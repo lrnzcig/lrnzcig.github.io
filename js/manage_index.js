@@ -15,10 +15,14 @@ function initTagsGAButtons() {
     var target = getEventTarget(event);
     hideShowDivsForTags(target.innerHTML);
     lastClicked = target.innerHTML;
-  }).on("focusout", function() {
+  }).on("focusout", function(event) {
     lastClicked = '';
-    // timeout to avoid a glitch when clicked to a different tag
-    window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 200);
+    if (event.relatedTarget) {
+        // going into a post, do nothing
+    } else {
+        // timeout to avoid a glitch when clicked to a different tag
+        window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 200);
+    }
   });
 
   $(document).click(function(event) {
