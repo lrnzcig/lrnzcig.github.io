@@ -171,40 +171,37 @@ function initOlderNewerListeners() {
     if (typeof $('#tags-ul').innerHTML == "undefined") {
       if (row2.style.display == 'none' &&
           row3.style.display == '') {
-        // third time older has been pressed
+        // second time older has been pressed
         row3.style.display = 'none';
+        row4.style.display = 'none';
         row5.style.display = '';
         older.style.visibility = 'hidden';
-      } else if (row1.style.display == 'none' &&
-                 row2.style.display == '') {
-        // second time older has been pressed
-        row2.style.display = 'none';
-        row4.style.display = '';
       } else {
         // first time
         row1.style.display = 'none';
+        row2.style.display = 'none';
         row3.style.display = '';
+        row4.style.display = '';
+        if (selectedTag == "R") {
+          older.style.visibility = 'hidden';
+        }
       }
       newer.style.visibility = 'visible';
     }
   }, false);
   newer.addEventListener('click', function() {
     if (typeof $('#tags-ul').innerHTML == "undefined") {
-      if (row2.style.display == 'none' &&
-          row3.style.display == 'none' &&
-          row4.style.display == '') {
-        // older has been pressed 3 times
-        row3.style.display = '';
-        row5.style.display = 'none';
-      } else if (row1.style.display == 'none' &&
-                 row2.style.display == 'none' &&
-                 row3.style.display == '') {
+      if (row3.style.display == 'none' &&
+          row5.style.display == '') {
         // older has been pressed 2 times
-        row2.style.display = '';
-        row4.style.display = 'none';
+        row3.style.display = '';
+        row4.style.display = '';
+        row5.style.display = 'none';
       } else {
         row1.style.display = '';
+        row2.style.display = '';
         row3.style.display = 'none';
+        row4.style.display = 'none';
         newer.style.visibility = 'hidden';
       }
       older.style.visibility = 'visible';
@@ -217,6 +214,8 @@ function initOlderNewerListeners() {
 function hideShowDivsForTags(tag_value) {
   var older = document.getElementById('older');
   var newer = document.getElementById('newer');
+  selectedTag = tag_value;
+  // TODO another global variable with number of posts that are visible
   if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
     row1.style.display = 'none';
     row2.style.display = 'none';
@@ -276,7 +275,7 @@ function hideShowDivsForTags(tag_value) {
     $("#gauserid-div").detach().appendTo("#row-3");
     $("#arules-div").detach().appendTo("#row-3");
     $("#uplift-div").detach().appendTo("#row-4");
-    older.style.visibility = 'hidden';
+    older.style.visibility = 'visible';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Wearables") {
     row1.style.display = 'none';
@@ -440,6 +439,8 @@ var clc = document.getElementById('clusteringdtw-click');
 var clt = document.getElementById('clusteringdtw-title');
 var fcc = document.getElementById('forecasting-challenge-click');
 var fct = document.getElementById('forecasting-challenge-title');
+// selected tag
+var selectedTag = '';
 
 // initial state
 row3.style.display = 'none';
