@@ -8,27 +8,40 @@ function initTagsGAButtons() {
   };
 
   // events on the ul
-  var lastClicked;
   $('#tags-ul').on("click", function(event) {
     // timeout to avoid a glitch when clicked to a different tag
-    //window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
+    //window.setTimeout(function() { hideShowDivsForTags(lastTagClicked); }, 100);
     var target = getEventTarget(event);
     hideShowDivsForTags(target.innerHTML);
-    lastClicked = target.innerHTML;
+    if (lastTagClicked) {
+        lastTagClicked.style.backgroundColor = "#e6e6e6"; // bluegreen style
+    }
+    lastTagClicked = target;
+    target.style.backgroundColor = "#c1d2e1"; // bluegreen style
   }).on("focusout", function(event) {
-    lastClicked = '';
     if (event.relatedTarget) {
         // going into a post, do nothing
     } else {
+        if (lastTagClicked != null) {
+            lastTagClicked.style.backgroundColor = "#e6e6e6"; // bluegreen style
+            lastTagClicked = null;
+        }
         // timeout to avoid a glitch when clicked to a different tag
-        window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 200);
+        window.setTimeout(function() { hideShowDivsForTags(lastTagClicked); }, 200);
     }
   });
 
   $(document).click(function(event) {
-    if (lastClicked == '') {
-      // timeout to avoid a glitch when clicked to a different tag
-      //window.setTimeout(function() { hideShowDivsForTags(lastClicked); }, 100);
+    target = getEventTarget(event);
+    if (lastTagClicked != null && target != null &&
+      target != lastTagClicked) {
+      if ($(target).is('a, a *')) {
+          // clicked something => in particular "older" and "newer"
+      } else {
+          lastTagClicked.style.backgroundColor = "#e6e6e6"; // bluegreen style
+          lastTagClicked = null;
+          hideShowDivsForTags(lastTagClicked);
+      }
     }
   });
 
@@ -182,7 +195,7 @@ function initOlderNewerListeners() {
         row2.style.display = 'none';
         row3.style.display = '';
         row4.style.display = '';
-        if (selectedTag == "R") {
+        if (lastTagClicked != null && lastTagClicked.innerHTML == "R") {
           older.style.visibility = 'hidden';
         }
       }
@@ -214,7 +227,6 @@ function initOlderNewerListeners() {
 function hideShowDivsForTags(tag_value) {
   var older = document.getElementById('older');
   var newer = document.getElementById('newer');
-  selectedTag = tag_value;
   // TODO another global variable with number of posts that are visible
   if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
     row1.style.display = 'none';
@@ -440,7 +452,7 @@ var clt = document.getElementById('clusteringdtw-title');
 var fcc = document.getElementById('forecasting-challenge-click');
 var fct = document.getElementById('forecasting-challenge-title');
 // selected tag
-var selectedTag = '';
+var lastTagClicked = null;
 
 // initial state
 row3.style.display = 'none';
