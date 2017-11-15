@@ -249,7 +249,7 @@ $(document).ready(function () {
       </span>
     </span>
     <span itemprop="headline" style="display: none">MineThatData Forecasting Challenge, Bayesian Structural Time Series models, time series forecasting, R code, BSTS, cross-validation</span></a></h3>
-    <span itemprop="dateModified" content="2017-11-06" class="meta">6 Nov 2017</span>
+    <span itemprop="dateModified" content="2017-11-15" class="meta">15 Nov 2017</span>
     <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
       <!--<span itemprop="id">href="http://lrnzcig.github.io</span>-->
     </span>
@@ -267,6 +267,8 @@ $(document).ready(function () {
 <div id="purpose" class="section level2">
 <h2>Purpose</h2>
 <p>This markdown provides the complete R code for the proposed solution of <a href="http://sisifospage.tech/">Sisifo’s page team</a> to the <a href="http://blog.minethatdata.com/2017/09/the-minethatdata-forecasting-challenge.html">MineThatData Forecasting Challenge</a>. The challenge is to forecast the next 3 months of a target time series that contains data of sales of an unknown company for 80 months. The proposed solution uses Bayesian Structural Time Series models, through the excellent open source library <code>bsts</code> by Steve Scott.</p>
+<p>This solution was published at this <a href="http://blog.minethatdata.com/2017/11/the-minethatdata-forecasting-challenge_14.html">MineThatData blog post</a> in Nov 15th 2017;
+if you are interested on the theoretical justification of the solution, some background about BSTS models and the way to use them (in particular, setting up Bayesian priors and doing cross-validation for time series, i.e. forward chaining), you can check the <a href="http://sisifospage.tech/docs/MineThatData_ForecastChallenge_whitepaper.pdf">whitepaper</a> that went along with the proposed solution. </p>
 <div id="loading-the-data" class="section level3">
 <h3>Loading the data</h3>
 <p>The data can be read directly from the excel file using the code below. Note that in the original file a few cells are duplicated (the ones corresponding to the month 41) and these duplicates are removed. A simple plot of the data is also provided.</p>
