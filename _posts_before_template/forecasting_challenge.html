@@ -127,6 +127,9 @@ $(document).ready(function () {
 <div id="purpose" class="section level2">
 <h2>Purpose</h2>
 <p>This markdown provides the complete R code for the proposed solution of <a href="http://sisifospage.tech/">Sisifo’s page team</a> to the <a href="http://blog.minethatdata.com/2017/09/the-minethatdata-forecasting-challenge.html">MineThatData Forecasting Challenge</a>. The challenge is to forecast the next 3 months of a target time series that contains data of sales of an unknown company for 80 months. The proposed solution uses Bayesian Structural Time Series models, through the excellent open source library <code>bsts</code> by Steve Scott.</p>
+<p>This solution was published at this <a href="http://blog.minethatdata.com/2017/11/the-minethatdata-forecasting-challenge_14.html">MineThatData blog post</a> in Nov 15th 2017, and it got the best <code>squared error</code> of all solutions presented!!! (see <a href="http://blog.minethatdata.com/2017/11/the-minethatdata-forecasting-challenge_16.html">here</a>).</p>
+If you are interested on the theoretical justification of the solution, some background about BSTS models and the way to use them (in particular, setting up Bayesian priors and doing cross-validation for time series, i.e. forward chaining), you can check the <a href="http://sisifospage.tech/docs/MineThatData_ForecastChallenge_whitepaper.pdf">whitepaper in pdf format</a> that went along with the proposed solution.
+</p>
 <div id="loading-the-data" class="section level3">
 <h3>Loading the data</h3>
 <p>The data can be read directly from the excel file using the code below. Note that in the original file a few cells are duplicated (the ones corresponding to the month 41) and these duplicates are removed. A simple plot of the data is also provided.</p>
@@ -135,11 +138,11 @@ library(httr)
 GET(&quot;http://minethatdata.com/MineThatData_ForecastChallenge_20170914.xlsx&quot;, 
     write_disk(tf &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
 <pre><code>## Response [http://minethatdata.com/MineThatData_ForecastChallenge_20170914.xlsx]
-##   Date: 2017-10-31 18:27
+##   Date: 2017-12-03 17:03
 ##   Status: 200
 ##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 ##   Size: 21.8 kB
-## &lt;ON DISK&gt;  /var/folders/lm/6kvyzp5d3ds_20dxw939n5hw0000gp/T//RtmpUurGRm/file1c70782331a0.xlsx</code></pre>
+## &lt;ON DISK&gt;  /var/folders/lm/6kvyzp5d3ds_20dxw939n5hw0000gp/T//RtmpTHH0nN/file4fb92f432430.xlsx</code></pre>
 <pre class="r"><code>sales &lt;-
   read_excel(tf, sheet=1,
              col_names=TRUE, col_types=rep(&quot;numeric&quot;, 17))
@@ -160,6 +163,7 @@ plot(sales$Month, sales$Rolling_12Month_Sales, type=&quot;l&quot;)</code></pre>
 <li>the rest are for debugging and visualization</li>
 </ul>
 <p>The loop implements 3 measures, the <em>root mean square deviation</em>, and some other measures commonly used in time series prediction, <em>mape</em> and <em>mase</em>.</p>
+<pre class="r"><code>library(bsts)</code></pre>
 <pre class="r"><code># cross-validation loop
 bsts.cv.loop &lt;- function(data,
                          horizon,
