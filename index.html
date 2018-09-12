@@ -87,6 +87,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="index.html">Blog</a></li>
+                                    <li><a href="2018-09-10-uplift-not-random-split.html">Uplift: not random split</a></li>
                                     <li><a href="2017-10-30-forecasting-bsts.html">Forecasting Challenge BSTS</a></li>
                                     <li><a href="2017-05-15-time-series-clustering-pulsi.html">DTW Clustering time series</a></li>
                                     <li><a href="2017-01-07-time-series-neural-net.html">Time series neural net</a></li>
@@ -135,6 +136,45 @@
                 <div class="col-md-8 blog-main">
                     <div class="row" id="row-1">
 
+                      <!-- Uplift not random -->
+                      <div class="col-md-6 col-sm-6" id="uplift-notrandom-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/Falling-Man-300px.png" alt="Challenge">
+                                  <h3><a href="2018-09-10-uplift-not-random-split.html" id="uplift-notrandom-title" >
+                                  <span itemprop="name">Uplift modeling: what if the split between treatment and control is not random</span></a></h3>
+                                  <span itemprop="datePublished" content="2018-09-10" class="data">10 Sep 2018</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
+                                      <span itemprop="height">166</span>
+                                      <span itemprop="width">269</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                                      </span>
+                                    </span>
+                                    <span itemprop="headline" style="display: none">Uplift modeling, not random split treatment and control groups, problems with uplift, negative qini, negative gain, bad uplift classifier</span></a></h3>
+                                    <span itemprop="dateModified" content="2018-09-12" class="meta">12 Sep 2018</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  Uplift modeling does not work well when the split between targeted and not targeted customers is not done at random. The problem was raised by a reader of <a href="2016-04-01-uplift-evaluation.html">a previous post</a>; reproduced now with a public dataset. Symptoms: Qini area is negative, but otherwise the diagnosis for the classifier is ok. It includes code in R and a dataset, so that it may be used as a tutorial.
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2018-09-10-uplift-not-random-split.html" class="btn btn-tales-one" id="uplift-notrandom-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
                       <!-- Forecasting Challenge -->
                       <div class="col-md-6 col-sm-6" id="forecasting-challenge-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -142,7 +182,7 @@
                                   <img src="img/duel-300px.png" alt="Challenge">
                                   <h3><a href="2017-10-30-forecasting-bsts.html" id="forecasting-challenge-title" >
                                   <span itemprop="name">MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models</span></a></h3>
-                                  <span itemprop="datePublished" content="2017-11-31" class="data">31 Nov 2017</span>
+                                  <span itemprop="datePublished" content="2017-11-31" class="data">31 Oct 2017</span>
                                   <span style="display: none"><!-- Structured Data -->
                                     <span itemprop="author" itemtype="http://schema.org/Person">
                                       <span itemprop="name">sisifospage@gmail.com</span>
@@ -173,6 +213,11 @@
                               </div>
                           </article>
                       </div>
+
+
+
+                    </div>
+                    <div class="row" id="row-2">
 
                       <!-- Clustering DTW time series -->
                       <div class="col-md-6 col-sm-6" id="clusteringdtw-div">
@@ -213,10 +258,6 @@
                           </article>
                       </div>
 
-
-                    </div>
-                    <div class="row" id="row-2">
-
                       <!-- Time series neural net -->
                       <div class="col-md-6 col-sm-6" id="timeseriesnn-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -255,6 +296,10 @@
                               </div>
                           </article>
                       </div>
+
+
+                    </div>
+                    <div class="row" id="row-3">
 
                       <!-- Wearable physical -->
                       <div class="col-md-6 col-sm-6" id="wearphysical-div">
@@ -295,9 +340,6 @@
                           </article>
                       </div>
 
-                    </div>
-                    <div class="row" id="row-3">
-
                       <!-- Wearable robust -->
                       <div class="col-md-6 col-sm-6" id="wearups-robust-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -336,6 +378,11 @@
                               </div>
                           </article>
                       </div>
+
+
+                    </div>
+
+                    <div class="row" id="row-4">
 
                       <!-- Wearable upstream -->
                       <div class="col-md-6 col-sm-6" id="wearupstream-div">
@@ -376,10 +423,6 @@
                           </article>
                       </div>
 
-                    </div>
-
-                    <div class="row" id="row-4">
-
                       <!-- GA user ids -->
                       <div class="col-md-6 col-sm-6" id="gauserid-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -419,6 +462,10 @@
                           </article>
                       </div>
 
+                    </div>
+
+                    <div class="row" id="row-5">
+
                       <!-- arules -->
                       <div class="col-md-6 col-sm-6" id="arules-div">
                           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
@@ -457,10 +504,6 @@
                               </div>
                           </article>
                       </div>
-
-                    </div>
-
-                    <div class="row" id="row-5">
 
                       <!-- uplift -->
                       <div class="col-md-6 col-sm-6" id="uplift-div">

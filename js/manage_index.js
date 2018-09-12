@@ -162,15 +162,29 @@ function initTagsGAButtons() {
     ga('send', { hitType: 'event',
     eventCategory: 'ReadMore',
     eventAction: 'Click',
-    eventLabel: 'ForChar',
+    eventLabel: 'ForChal',
     eventValue: 17 });
   }, false);
   fct.addEventListener('click', function() {
     ga('send', { hitType: 'event',
     eventCategory: 'Title',
     eventAction: 'Click',
-    eventLabel: 'ForChar',
+    eventLabel: 'ForChal',
     eventValue: 18 });
+  }, false);
+  unrc.addEventListener('click', function() {
+    ga('send', { hitType: 'event',
+    eventCategory: 'ReadMore',
+    eventAction: 'Click',
+    eventLabel: 'UpNRandom',
+    eventValue: 19 });
+  }, false);
+  unrt.addEventListener('click', function() {
+    ga('send', { hitType: 'event',
+    eventCategory: 'Title',
+    eventAction: 'Click',
+    eventLabel: 'UpNRandom',
+    eventValue: 20 });
   }, false);
 
 };
@@ -243,6 +257,8 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = 'none';
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
+    upliftnotrandom.style.display = '';
+    $("#uplift-notrandom-div").detach().appendTo("#row-5");
     $("#uplift-div").detach().appendTo("#row-5");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
@@ -261,6 +277,7 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = 'none';
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
+    upliftnotrandom.style.display = 'none';
     $("#gauserid-div").detach().appendTo("#row-4");
     $("#arules-div").detach().appendTo("#row-4");
     older.style.visibility = 'hidden';
@@ -280,12 +297,14 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = '';
     clusteringdtw.style.display = '';
     forchallenge.style.display = '';
+    upliftnotrandom.style.display = '';
+    $("#uplift-notrandom-div").detach().appendTo("#row-1");
     $("#forecasting-challenge-div").detach().appendTo("#row-1");
-    $("#clusteringdtw-div").detach().appendTo("#row-1");
+    $("#clusteringdtw-div").detach().appendTo("#row-2");
     $("#timeseriesnn-div").detach().appendTo("#row-2");
-    $("#wearphysical-div").detach().appendTo("#row-2");
+    $("#wearphysical-div").detach().appendTo("#row-3");
     $("#gauserid-div").detach().appendTo("#row-3");
-    $("#arules-div").detach().appendTo("#row-3");
+    $("#arules-div").detach().appendTo("#row-4");
     $("#uplift-div").detach().appendTo("#row-4");
     older.style.visibility = 'visible';
     newer.style.visibility = 'hidden';
@@ -304,6 +323,7 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = '';
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
+    upliftnotrandom.style.display = 'none';
     $("#timeseriesnn-div").detach().appendTo("#row-2");
     $("#wearphysical-div").detach().appendTo("#row-2");
     $("#wearups-robust-div").detach().appendTo("#row-3");
@@ -325,6 +345,7 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = 'none';
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
+    upliftnotrandom.style.display = 'none';
     $("#wearups-robust-div").detach().appendTo("#row-3");
     $("#wearupstream-div").detach().appendTo("#row-3");
     older.style.visibility = 'hidden';
@@ -344,6 +365,7 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = '';
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
+    upliftnotrandom.style.display = 'none';
     $("#timeseriesnn-div").detach().appendTo("#row-2");
     $("#wearphysical-div").detach().appendTo("#row-2");
     older.style.visibility = 'hidden';
@@ -363,7 +385,7 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = 'none';
     clusteringdtw.style.display = '';
     forchallenge.style.display = 'none';
-    $("#forecasting-challenge-div").detach().appendTo("#row-1");
+    upliftnotrandom.style.display = 'none';
     $("#clusteringdtw-div").detach().appendTo("#row-1");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
@@ -382,8 +404,8 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = 'none';
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = '';
+    upliftnotrandom.style.display = 'none';
     $("#forecasting-challenge-div").detach().appendTo("#row-1");
-    $("#clusteringdtw-div").detach().appendTo("#row-1");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else {
@@ -402,14 +424,16 @@ function hideShowDivsForTags(tag_value) {
     timeseriesnn.style.display = '';
     clusteringdtw.style.display = '';
     forchallenge.style.display = '';
+    upliftnotrandom.style.display = '';
+    $("#uplift-notrandom-div").detach().appendTo("#row-1");
     $("#forecasting-challenge-div").detach().appendTo("#row-1");
-    $("#clusteringdtw-div").detach().appendTo("#row-1");
+    $("#clusteringdtw-div").detach().appendTo("#row-2");
     $("#timeseriesnn-div").detach().appendTo("#row-2");
-    $("#wearphysical-div").detach().appendTo("#row-2");
+    $("#wearphysical-div").detach().appendTo("#row-3");
     $("#wearups-robust-div").detach().appendTo("#row-3");
-    $("#wearupstream-div").detach().appendTo("#row-3");
+    $("#wearupstream-div").detach().appendTo("#row-4");
     $("#gauserid-div").detach().appendTo("#row-4");
-    $("#arules-div").detach().appendTo("#row-4");
+    $("#arules-div").detach().appendTo("#row-5");
     $("#uplift-div").detach().appendTo("#row-5");
     older.style.visibility = 'visible';
     newer.style.visibility = 'hidden';
@@ -432,6 +456,7 @@ var wearphysical = document.getElementById('wearphysical-div');
 var timeseriesnn = document.getElementById('timeseriesnn-div');
 var clusteringdtw = document.getElementById('clusteringdtw-div');
 var forchallenge = document.getElementById('forecasting-challenge-div');
+var upliftnotrandom = document.getElementById('uplift-notrandom-div');
 // GA events
 var uc = document.getElementById('uplift-click');
 var ut = document.getElementById('uplift-title');
@@ -451,6 +476,8 @@ var clc = document.getElementById('clusteringdtw-click');
 var clt = document.getElementById('clusteringdtw-title');
 var fcc = document.getElementById('forecasting-challenge-click');
 var fct = document.getElementById('forecasting-challenge-title');
+var unrc = document.getElementById('uplift-notrandom-click');
+var unrt = document.getElementById('uplift-notrandom-title');
 // selected tag
 var lastTagClicked = null;
 
