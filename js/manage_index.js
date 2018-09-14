@@ -376,7 +376,7 @@ function hideShowDivsForTags(tag_value) {
     row3.style.display = 'none';
     row4.style.display = 'none';
     row5.style.display = 'none';
-    arules.style.display = 'none';
+    arules.style.display = '';
     gauserid.style.display = 'none';
     uplift.style.display = 'none';
     wearupstream.style.display = 'none';
@@ -387,6 +387,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
     $("#clusteringdtw-div").detach().appendTo("#row-1");
+    $("#arules-div").detach().appendTo("#row-1");
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "BSTS") {
