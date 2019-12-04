@@ -61,31 +61,80 @@
         </h1>
 
         <!-- Blog Post -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
+
+     <div class="card mb-4">
+       <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+       <img class="card-img-top" src="img/Falling-Man-300px.png" alt="Card image cap">
+       <div class="card-body">
+         <h2 class="card-title"><a href="2018-09-10-uplift-not-random-split.html" id="uplift-notrandom-title" >
+           <span itemprop="name">Uplift modeling: what if the split between treatment and control is not random</span></a></h2>
+           <span itemprop="datePublished" content="2018-09-10" class="meta" style="display: none">10 Sep 2018</span>
+           <span style="display: none"><!-- Structured Data -->
+             <span itemprop="author" itemtype="http://schema.org/Person">
+               <span itemprop="name">sisifospage@gmail.com</span>
+             </span>
+             <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+               <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
+               <span itemprop="height">179</span>
+               <span itemprop="width">300</span>
+             </span>
+             <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+               <span itemprop="name">Sisifo's Page</span>
+               <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                 <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+               </span>
+             </span>
+             <span itemprop="headline" style="display: none">Uplift modeling, not random split treatment and control groups, problems with uplift, negative qini, negative gain, bad uplift classifier</span></a></h3>
+             <span itemprop="dateModified" content="2018-09-12" class="meta">12 Sep 2018</span>
+             <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+             </span>
+           </span>
+         <p class="card-text">Uplift modeling does not work well when the split between targeted and not targeted customers is not done at random. The problem was raised by a reader of <a href="2016-04-01-uplift-evaluation.html">a previous post</a>; reproduced now with a public dataset. Symptoms: Qini area is negative, but otherwise the diagnosis for the classifier is ok. It includes code in R and a dataset, so that it may be used as a tutorial.</p>
+         <a href="2018-09-10-uplift-not-random-split.html" class="btn btn-primary" id="uplift-notrandom-click">Read More &rarr;</a>
+       </div>
+       <div class="card-footer text-muted">
+         Posted on September 10, 2018 by
+         <a href="#">Sisifo's Page</a>
+       </div>
+     </article>
+     </div>
 
         <!-- Blog Post -->
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+          <img class="card-img-top" src="http://lrnzcig.github.io/img/duel-300px.png" alt="Card image cap">
           <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <h2 class="card-title"><a href="2018-09-10-uplift-not-random-split.html" id="uplift-notrandom-title" >
+              <span itemprop="name">MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models</span></a></h2>
+              <span itemprop="datePublished" content="2018-09-10" class="meta" style="display: none">10 Sep 2018</span>
+              <span style="display: none"><!-- Structured Data -->
+                <span itemprop="author" itemtype="http://schema.org/Person">
+                  <span itemprop="name">sisifospage@gmail.com</span>
+                </span>
+                <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                  <a itemprop="url" href="http://lrnzcig.github.io/img/duel-300px.png"></a>
+                  <span itemprop="height">179</span>
+                  <span itemprop="width">300</span>
+                </span>
+                <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                  <span itemprop="name">Sisifo's Page</span>
+                  <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/duel-300px.png"></a>
+                  </span>
+                </span>
+                <span itemprop="headline" style="display: none">Uplift modeling, not random split treatment and control groups, problems with uplift, negative qini, negative gain, bad uplift classifier</span></a></h3>
+                <span itemprop="dateModified" content="2018-09-12" class="meta">12 Sep 2018</span>
+                <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </span>
+            <p class="card-text">MineThatData Forecasting Challenge, Bayesian Structural Time Series models, time series forecasting, R code, BSTS, cross-validation </p>
+            <a href="2017-10-30-forecasting-bsts.html" class="btn btn-primary" id="uplift-notrandom-click">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
+            Posted on October 31, 2017 by
+            <a href="#">Sisifo's Page</a>
           </div>
+        </article>
         </div>
 
         <!-- Blog Post -->
