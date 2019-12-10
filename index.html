@@ -28,8 +28,8 @@
         <script src="modules/respond/html5-3.6-respond-1.1.0.min.js"></script>
     <![endif]-->
 
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" 
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>')</script>
     <script>
@@ -136,6 +136,49 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 blog-main">
+
+                    <div class="row" id="row0">
+                      <!-- Uplift not random -->
+                      <div class="col-md-6 col-sm-6" id="uplift-notrandom-div">
+                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+                              <header>
+                                  <img src="img/Falling-Man-300px.png" alt="Falling Man">
+                                  <h3><a href="2019-11-24-arules-netcoin.html" id="arules-netcoin-title" >
+                                  <span itemprop="name">Visualization of the results of Association Rules in a graph using netCoin</span></a></h3>
+                                  <span itemprop="datePublished" content="2019-11-24" class="data">24 Nov 2019</span>
+                                  <span style="display: none"><!-- Structured Data -->
+                                    <span itemprop="author" itemtype="http://schema.org/Person">
+                                      <span itemprop="name">sisifospage@gmail.com</span>
+                                    </span>
+                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
+                                      <span itemprop="height">179</span>
+                                      <span itemprop="width">300</span>
+                                    </span>
+                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                      <span itemprop="name">Sisifo's Page</span>
+                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                                      </span>
+                                    </span>
+                                    <span itemprop="headline" style="display: none">Visualization of Association Rules, R code, netCoin R package, frequent itemsets, visualization frequent itemsets, apriori, interpretation a priori</span></a></h3>
+                                    <span itemprop="dateModified" content="2019-12-10" class="meta">10 Dic 2019</span>
+                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                                    </span>
+                                  </span>
+                                  <hr>
+                              </header>
+                              <div class="body">
+                                  Uplift modeling does not work well when the split between targeted and not targeted customers is not done at random. The problem was raised by a reader of <a href="2016-04-01-uplift-evaluation.html">a previous post</a>; reproduced now with a public dataset. Symptoms: Qini area is negative, but otherwise the diagnosis for the classifier is ok. It includes code in R and a dataset, so that it may be used as a tutorial.
+                              </div>
+                              <div class="clearfix">
+                                  <a href="2018-09-10-uplift-not-random-split.html" class="btn btn-tales-one" id="uplift-notrandom-click">Read more</a>
+                              </div>
+                          </article>
+                      </div>
+
+                    </div>
+
                     <div class="row" id="row-1">
 
                       <!-- Uplift not random -->
@@ -624,5 +667,10 @@
     <script src="modules/modernizr/modernizr-custom.js"></script>
 
     <script src="js/manage_index.js"></script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+      row0.style.display = 'none';
+    });
+    </script>
 </body>
 </html>
