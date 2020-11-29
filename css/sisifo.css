@@ -1,6 +1,192 @@
+/* centered image for posts */
 .post-home-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
   /* width: 50%; */
+}
+
+/* Add commment form */
+.create-comment input,
+.contact-form input,
+.create-comment textarea,
+.contact-form textarea {
+  margin-top: 15px;
+}
+.create-comment .btn,
+.contact-form .btn {
+  margin: 15px 0 0 30px;
+  float: right;
+}
+.content,
+.about {
+  padding-top: 36px;
+  padding-bottom: 80px;
+}
+/* About me page */
+.about hr {
+  margin-top: 75px;
+}
+.about-portrait {
+  float: right;
+  margin-top: 20px;
+  margin-left: 70px;
+  -webkit-border-radius: 180px;
+  -moz-border-radius: 180px;
+  border-radius: 180px;
+}
+@media (max-width: 767px) {
+  .about-portrait {
+    float: none;
+    margin: 40px auto;
+  }
+}
+.about-button {
+  margin-top: 30px;
+}
+/* The various styles that are used in the about me text chunk */
+.about-bold {
+  font-weight: bold;
+}
+.about-italic {
+  font-style: italic;
+}
+.about-large,
+.about-medium,
+.about-small {
+  font-family: 'PT Serif', serif;
+  line-height: 60px;
+}
+@media (max-width: 767px) {
+  .about-large,
+  .about-medium,
+  .about-small {
+    display: block;
+  }
+}
+.about-large {
+  font-size: 40px;
+}
+.about-medium {
+  font-size: 36px;
+}
+.about-small {
+  font-size: 30px;
+}
+
+/* Widewrappers that span the whole width of the page */
+.widewrapper {
+  background-color: #feffff;
+}
+.widewrapper.main {
+  -webkit-box-shadow: inset 1px 10px 8px -8px #ababab;
+  -moz-box-shadow: inset 1px 10px 8px -8px #ababab;
+  box-shadow: inset 1px 10px 8px -8px #ababab;
+}
+.widewrapper.masthead {
+  background-color: #242b32;
+  color: #f8f8f9;
+}
+.widewrapper.subheader {
+  background-color: #37424c;
+  color: #b6bfc8;
+  font-size: 16px;
+  min-height: 63px;
+}
+.widewrapper.footer {
+  background-color: #242b32;
+  color: #b3b5b7;
+  font-size: 14px;
+}
+.widewrapper.footer a {
+  color: #7b8690;
+}
+.widewrapper.footer h1,
+.widewrapper.footer h2,
+.widewrapper.footer h3,
+.widewrapper.footer h4,
+.widewrapper.footer h5 {
+  color: #e6e6e6;
+}
+.widewrapper.copyright {
+  background-color: #37424c;
+  color: #b6bfc8;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.widewrapper.copyright a {
+  color: #e2e5e9;
+}
+
+/* General Content styles such as links, body text, or headings */
+body {
+  font-size: 16px;
+  line-height: 27px;
+  font-family: 'Open Sans', sans-serif;
+  color: #404b55;
+  background-color: #feffff;
+}
+a {
+  color: #5b6268;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #5b6268;
+}
+h1 {
+  font-size: 45px;
+  line-height: 60px;
+  font-weight: normal;
+  font-family: 'PT Serif', serif;
+}
+h2 {
+  font-size: 30px;
+  line-height: 40px;
+  font-family: 'Open Sans', sans-serif;
+}
+h3 {
+  font-size: 21px;
+  line-height: 30px;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+hr {
+  border-top-color: #ced5db;
+}
+
+/* The image credits page */
+@media (max-width: 767px) {
+  .credits {
+    text-align: center;
+  }
+  .credits img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.credits .image {
+  margin-top: 60px;
+}
+.credits .details {
+  margin-top: 60px;
+  margin-bottom: 75px;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .credits .details {
+    margin-top: 45px;
+  }
+}
+@media (max-width: 767px) {
+  .credits .details {
+    margin-top: 10px;
+  }
+}
+.credits img {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+}
+.credits .bold {
+  font-weight: bold;
 }

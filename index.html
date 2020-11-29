@@ -1,756 +1,710 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<!-- Microdata markup added by Google Structured Data Markup Helper. -->
-<html class="js inlinesvg">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Sisifo - Blog</title>
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width"/>
 
-    <!-- Bootstrap styles -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Font-Awesome -->
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"/>
+  <title>Sisifo - Blog</title>
 
-    <!-- Google Webfonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CPT+Serif:400,400italic' rel='stylesheet' type='text/css'/>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles-bluegreen.css" id="theme-styles"/>
+  <!-- Custom styles for this template -->
+  <link href="css/blog-home.css" rel="stylesheet">
+  <link href="css/sisifo.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
-        <script src="modules/respond/html5-3.6-respond-1.1.0.min.js"></script>
-    <![endif]-->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-75939736-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>')</script>
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
-      a=s.createElement(o),m=s.getElementsByTagName(o)[0];
-      a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })
-    (window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    gtag('config', 'UA-75939736-1');
+  </script>
 
-    // TODO js function
-    var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
-    var CLIENT_ID;
-
-    if (window.localStorage) {
-      ga('create', 'UA-75939736-1', 'auto', {
-        'storage': 'none',
-        'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
-      });
-      ga(function(tracker) {
-        localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
-      });
-      CLIENT_ID = localStorage.getItem(GA_LOCAL_STORAGE_KEY);
-    }
-    else {
-      ga('create', 'UA-75939736-1', 'auto');
-      CLIENT_ID = "no local storage"
-    }
-
-    ga('send', 'pageview', {
-      'dimension1': CLIENT_ID
-    });
-    </script>
 </head>
+
 <body>
-    <header>
-        <div class="widewrapper masthead">
-            <div class="container">
-                <a href="index.html" id="logo">
-                    Sisifo's page
-                </a>
 
-                <div id="mobile-nav-toggle" class="pull-right">
-                    <a href="#" data-toggle="collapse" data-target=".tales-nav .navbar-collapse">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sisifo´s page</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Blog
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="credits.html">Credits</a>
+          </li>
+          <!-- <li class="nav-item">
+            <ul class="dropdown-menu">
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="2018-09-10-uplift-not-random-split.html">Uplift: not random split</a></li>
+                <li><a href="2017-10-30-forecasting-bsts.html">Forecasting Challenge BSTS</a></li>
+                <li><a href="2017-05-15-time-series-clustering-pulsi.html">DTW Clustering time series</a></li>
+                <li><a href="2017-01-07-time-series-neural-net.html">Time series neural net</a></li>
+                <li><a href="2016-11-05-wearable-physical-activity.html">Wearable physical activity</a></li>
+                <li><a href="2016-10-30-wearable-robust.html">Wearable robust app</a></li>
+                <li><a href="2016-08-09-wearable-data-upstream.html">Wearable data upstream</a></li>
+                <li><a href="2016-06-10-infer-GA-sessions.html">Infer GA sessions</a></li>
+                <li><a href="2016-05-03-association-rules.html">Arules clickstream</a></li>
+                <li><a href="2016-04-01-uplift-evaluation.html">Uplift evaluation</a></li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-                <nav class="pull-right tales-nav">
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav nav-pills navbar-nav">
+  <!-- Page Content -->
+  <div class="container">
 
-                            <li class="dropdown active">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Blog
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="index.html">Blog</a></li>
-                                    <li><a href="2018-09-10-uplift-not-random-split.html">Uplift: not random split</a></li>
-                                    <li><a href="2017-10-30-forecasting-bsts.html">Forecasting Challenge BSTS</a></li>
-                                    <li><a href="2017-05-15-time-series-clustering-pulsi.html">DTW Clustering time series</a></li>
-                                    <li><a href="2017-01-07-time-series-neural-net.html">Time series neural net</a></li>
-                                    <li><a href="2016-11-05-wearable-physical-activity.html">Wearable physical activity</a></li>
-                                    <li><a href="2016-10-30-wearable-robust.html">Wearable robust app</a></li>
-                                    <li><a href="2016-08-09-wearable-data-upstream.html">Wearable data upstream</a></li>
-                                    <li><a href="2016-06-10-infer-GA-sessions.html">Infer GA sessions</a></li>
-                                    <li><a href="2016-05-03-association-rules.html">Arules clickstream</a></li>
-                                    <li><a href="2016-04-01-uplift-evaluation.html">Uplift evaluation</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-                            <li>
-                                <a href="credits.html">Credits</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+    <div class="row">
 
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Blog
+          <small>entries</small>
+        </h1>
+
+        <!-- DL pulsi intro -->
+        <div class="card mb-4"  id="uplift-notrandom-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/work-in-progress-300px.png" alt="Work In Progress" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a>
+                    <span itemprop="name">
+                      Work in progress - new posts
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/work-in-progress-300px.png"></a>
+                    <span itemprop="height">179</span>
+                    <span itemprop="width">300</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/work-in-progress-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">
+                    pulsioximeter prediction, deep learning time series, data augmentation time series, desaturation alarm prediction, pulsioximeter deep learning, deep learning time series data augmentation
+                    Visualization of Association Rules, R code, netCoin R package, frequent itemsets, visualization frequent itemsets, apriori, interpretation a priori
+                  </span></a></h3>
+                  <span itemprop="dateModified" content="2020-01-04" class="meta">4 Jan 2020</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                  </span>
+              </header>
+              <p class="card-text">
+                <p>
+                  Under reconstruction! The aspect of this site may look broken for some browsers/resolutions.
+                </p>
+                <p>
+                  In the meantime, find below links to the most recent posts:
+                  <ul>
+                    <li><a href="2020-01-03-dl-pulsi-intro.html">Early desaturation alarm system using Deep Learning - data augmentation for time series</a></li>
+                    <li><a href="2019-11-24-arules-netcoin.html">Visualization of the results of Association Rules in a graph using netCoin</a></li>
+                  </ul>
+                </p>
+              </p>
             </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2020-01-04" class="data">
+                Posted on Jan 4, 2020
+              </span>
+            </div>
+          </article>
         </div>
 
-        <div class="widewrapper subheader">
-            <div class="container">
-                <div class="tales-breadcrumb">
-                    <a href="#">Blog</a>
-                </div>
-
-                <div class="tales-searchbox" style="visibility: hidden">
-                    <form action="#" method="get" accept-charset="utf-8">
-                        <button class="searchbutton" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        <input class="searchfield" id="searchbox" type="text" placeholder="Search"/>
-                    </form>
-                </div>
+        <!-- Uplift not random -->
+        <div class="card mb-4"  id="uplift-notrandom-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/Falling-Man-300px.png" alt="Falling Man" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2018-09-10-uplift-not-random-split.html" id="uplift-notrandom-title" >
+                    <span itemprop="name">
+                      Uplift modeling: what if the split between treatment and control is not random
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
+                    <span itemprop="height">179</span>
+                    <span itemprop="width">300</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">Uplift modeling, not random split treatment and control groups, problems with uplift, negative qini, negative gain, bad uplift classifier</span></a></h3>
+                  <span itemprop="dateModified" content="2018-09-12" class="meta">12 Sep 2018</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                  </span>
+              </header>
+              <p class="card-text">
+                Uplift modeling does not work well when the split between targeted and not targeted customers is not done at random. The problem was raised by a reader of <a href="2016-04-01-uplift-evaluation.html">a previous post</a>; reproduced now with a public dataset. Symptoms: Qini area is negative, but otherwise the diagnosis for the classifier is ok. It includes code in R and a dataset, so that it may be used as a tutorial.
+              </p>
+              <a href="2018-09-10-uplift-not-random-split.html" class="btn btn-primary" id="uplift-notrandom-click">Read More &rarr;</a>
             </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2018-09-10" class="data">
+                Posted on Sep 10, 2018
+              </span>
+            </div>
+          </article>
         </div>
-    </header>
 
-        <div class="widewrapper main">
-        <div class="container">
+        <!-- Forecasting Challenge -->
+        <div class="card mb-4"  id="forecasting-challenge-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/duel-300px.png" alt="Challenge" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2017-10-30-forecasting-bsts.html" id="forecasting-challenge-title" >
+                    <span itemprop="name">
+                      MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/duel-300px.png"></a>
+                    <span itemprop="height">300</span>
+                    <span itemprop="width">276</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">MineThatData Forecasting Challenge, Bayesian Structural Time Series models, time series forecasting, R code, BSTS, cross-validation</span></a></h3>
+                  <span itemprop="dateModified" content="2017-12-03" class="meta">03 Dic 2017</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                  </span>
+              </header>
+              <p class="card-text">
+                The challenge: forecasting the next 3 months of a target time series that contains data of sales of an unknown company. Markdown for R code.
+              </p>
+              <a href="2017-10-30-forecasting-bsts.html" class="btn btn-primary" id="forecasting-challenge-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2017-10-31" class="data">
+                Posted on Oct 31, 2017
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Clustering DTW time series -->
+        <div class="card mb-4"  id="clusteringdtw-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/EKG-Realistic-Heart-300px.png" alt="EKG Realistic Heart" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2017-05-15-time-series-clustering-pulsi.html" id="clusteringdtw-title" >
+                    <span itemprop="name">
+                      Clustering time series using DTW: pulsioximeter data
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/EKG-Realistic-Heart-300px.png"></a>
+                    <span itemprop="height">82</span>
+                    <span itemprop="width">288</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">apply clustering to time series using Dynamic Time Warping, R code, Dynamic Time Warping for pulsioximeter data, DTW, pulsioximeter dataset</span></a></h3>
+                  <span itemprop="dateModified" content="2017-11-05" class="meta">5 Nov 2017</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                  Using now data from a pulsioximeter (instead of the accelerometer of previous posts), anyhow generating a big amount time series -the device is switched on every night with a patient, and for comparison a few nights from a healthier person are added. As a step of an initial exploratory analysis of the set of time series, the objective is to perform a clustering of a dataset of time series, using Dynamic Time Warping as the distance measure. It includes code in R and a dataset, so that it may be used as a tutorial.
+              </p>
+              <a href="2017-05-15-time-series-clustering-pulsi.html" class="btn btn-primary" id="clusteringdtw-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2017-05-21" class="data">
+                Posted on May 21, 2017
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Time series neural net -->
+        <div class="card mb-4"  id="timeseriesnn-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/Neural-Network-2-200px.png" alt="Neural network" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2017-01-07-time-series-neural-net.html" id="timeseriesnn-title" >
+                    <span itemprop="name">
+                      Applying neural nets to time series: accelerometer data from wearable
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/Neural-Network-2-200px.png"></a>
+                    <span itemprop="height">171</span>
+                    <span itemprop="width">200</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">apply neural network to time series, R code, detecting physical activity levels, accelerator data, wearables, neural net</span></a></h3>
+                  <span itemprop="dateModified" content="2017-01-29" class="meta">29 Jan 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                When approaching a somehow more advanced analysis of the data coming from an accelerometer, the far-from-obvious concepts from time series start to be needed. But are they really needed? Maybe not, since one could always apply a neural network for solving the problem. Is this second path easier in practice? It includes code in R and a dataset, so that it may be used as a tutorial.
+              </p>
+              <a href="2017-01-07-time-series-neural-net.html" class="btn btn-primary" id="timeseriesnn-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2017-01-20" class="data">
+                Posted on Jan 20, 2017
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Wearable physical -->
+        <div class="card mb-4"  id="wearphysical-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/johnny-automatic-spinning-a-top-200px.png" alt="Spinning a top" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2016-11-05-wearable-physical-activity.html" id="wearphysical-title" >
+                    <span itemprop="name">
+                      Wearables: measuring physical activity from accelerometer data
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/johnny-automatic-spinning-a-top-200px.png"></a>
+                    <span itemprop="height">195</span>
+                    <span itemprop="width">200</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">wearables, analysis, R code, detecting physical activity levels, acceleration signal vector magnitude</span></a></h3>
+                  <span itemprop="dateModified" content="2016-11-06" class="data">6 Nov 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                The very first analysis to try for the data coming from an accelerometer: measuring the physical activity of the user. Actually, the simplest statictic measures already tell a lot -in particular the standard deviation of the Signal Vector Magnitude (i.e. the modulus). It includes code in R and a dataset, so that it may be used as a tutorial.
+              </p>
+              <a href="2016-11-05-wearable-physical-activity.html" class="btn btn-primary" id="wearphysical-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2016-11-05" class="data">
+                Posted on Nov 5, 2016
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Wearable robust -->
+        <div class="card mb-4"  id="wearrobust-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/strongmancontrol-300px.png" alt="Strong Man Control" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2016-10-30-wearable-robust.html" id="wearrobust-title" >
+                    <span itemprop="name">
+                      Upstreaming data from a wearable device to a server: making a robust Android app for the lab
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/strongmancontrol-300px.png"></a>
+                    <span itemprop="height">156</span>
+                    <span itemprop="width">300</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, activity and service, Android Processes and Application Life Cycle</span></a></h3>
+                  <span itemprop="dateModified" content="2016-11-01" class="meta">1 Nov 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                Still setting up a lab for a number of wearables, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later... In this post, some conclusions on how to make the app robust enough, so that the users can do whatever they like with their smartphones during the experiment.
+              </p>
+              <a href="2016-10-30-wearable-robust.html" class="btn btn-primary" id="wearrobust-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2016-10-31" class="data">
+                Posted on Oct 31, 2016
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Wearable upstream -->
+        <div class="card mb-4"  id="wearupstream-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/tom-Boiling-point-of-water-200px.png" alt="Boiling point of water" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2016-08-09-wearable-data-upstream.html" id="wearupstream-title" >
+                    <span itemprop="name">
+                      Upstreaming data from a wearable device to a server: a Android app for a data lab
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/tom-Boiling-point-of-water-200px.png"></a>
+                    <span itemprop="height">200</span>
+                    <span itemprop="width">153</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, data lab, accelerometer data analysis</span></a></h3>
+                  <span itemprop="dateModified" content="2016-10-31" class="meta">31 Oct 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                Setting up a lab for a number of wearables, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later. Some features are not so common in an Android app implementation, e.g. a not negligible upstream of data. Includes detailed explanations and Java code.
+              </p>
+              <a href="2016-08-09-wearable-data-upstream.html" class="btn btn-primary" id="wearupstream-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2016-08-09" class="data">
+                Posted on Aug 9, 2016
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- GA user ids -->
+        <div class="card mb-4"  id="gauserid-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/users81-200px.png" alt="User" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2016-06-10-infer-GA-sessions.html" id="gauserid-title" >
+                    <span itemprop="name">
+                      Google Analytics: how to figure out sessions when a custom user id is not set (follow up on Association Rules)
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/users81-200px.png"></a>
+                    <span itemprop="height">200</span>
+                    <span itemprop="width">153</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">figure out sessions of Google Analytics, clickstream, Association Rules, custom user id</span></a></h3>
+                  <span itemprop="dateModified" content="2016-06-12" class="meta">12 Jun 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                How to identify sessions in records from Google Analytics, when your customer has not set the custom user id dimension (follow up on Association Rules post). Also, identify the sessions of the users in other cases with GA data, e.g. when associating events to sessions. Plus the code in R.
+              </p>
+              <a href="2016-06-10-infer-GA-sessions.html" class="btn btn-primary" id="gauserid-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2016-06-10" class="data">
+                Posted on Jun 10, 2016
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- arules -->
+        <div class="card mb-4"  id="arules-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/Petroglyph-Rayed-figure-200px.png" alt="Petroglyph" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2016-05-03-association-rules.html" id="arules-title" >
+                    <span itemprop="name">
+                      Association Rules applied to Google Analytics data for insights on the structure of a web site
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/Petroglyph-Rayed-figure-200px.png"></a>
+                    <span itemprop="height">200</span>
+                    <span itemprop="width">175</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">apriori for clikstream data, structure of the site as seen by the users, collaborative filtering</span></a></h3>
+                  <span itemprop="dateModified" content="2016-05-16" class="meta">16 May 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                How to mine Association Rules on clickstream data from Google Analytics, as a way to understand how users visit your web site. Includes details on how to configure GA and how to extract the data into R, plus the code in R for mining the rules. Seed for a recommendation system in your web site.
+              </p>
+              <a href="2016-05-03-association-rules.html" class="btn btn-primary" id="arules-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2016-06-10" class="data">
+                Posted on May 6, 2016
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- uplift -->
+        <div class="card mb-4"  id="uplift-div">
+          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
+            <div class="card-body">
+              <header>
+                <img src="img/liftarn-Perseus-200px.png" alt="Perseus" class="post-home-image"> <!-- class="card-img-top" -->
+                <h2 class="card-title">
+                  <a href="2016-04-01-uplift-evaluation.html" id="uplift-title" >
+                    <span itemprop="name">
+                      Cost/benefit evaluation of Uplift Modeling with an example in R
+                    </span>
+                  </a>
+                </h2>
+                <span style="display: none"><!-- Structured Data -->
+                  <span itemprop="author" itemtype="http://schema.org/Person">
+                    <span itemprop="name">sisifospage@gmail.com</span>
+                  </span>
+                  <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+                    <a itemprop="url" href="http://lrnzcig.github.io/img/liftarn-Perseus-200px.png"></a>
+                    <span itemprop="height">200</span>
+                    <span itemprop="width">143</span>
+                  </span>
+                  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <span itemprop="name">Sisifo's Page</span>
+                    <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+                      <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
+                    </span>
+                  </span>
+                  <span itemprop="headline" style="display: none">scenarios are relevant for uplift modeling, evaluate them from a business perspective</span></a></h3>
+                  <span itemprop="dateModified" content="2016-09-24" class="meta">24 September 2016</span>
+                  <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
+                </span>
+              </header>
+              <p class="card-text">
+                Is there a way to distinguish the customers that respond (or not) to a marketing action when targeted, from the customers that respond (or not) when they are not targeted? Which scenarios are relevant for uplift modeling, compared to a “traditional” model? How to evaluate them from a business perspective? How to fit the uplift model in R?
+              </p>
+              <a href="2016-04-01-uplift-evaluation.html" class="btn btn-primary" id="uplift-click">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              <span itemprop="datePublished" content="2016-04-06" class="data">
+                Posted on Apr 6, 2016
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
             <div class="row">
-                <div class="col-md-8 blog-main">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0" id="tags-ul">
+                  <li><a href="#">Uplift modeling</a></li>
+                  <li><a href="#">R</a></li>
+                  <li><a href="#">Business evaluation</a></li>
+                  <li><a href="#">Association Rules</a></li>
+                  <li><a href="#">Google Analytics</a></li>
+                  <li><a href="#">Wearables</a></li>
+                  <li><a href="#">Android app</a></li>
+                  <li><a href="#">Neural network</a></li>
+                  <li><a href="#">Clustering</a></li>
+                  <li><a href="#">BSTS</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                    <div class="row" id="row-wip">
-                      <div class="col-md-12 col-sm-12" id="wip-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/work-in-progress-300px.png" alt="Falling Man">
-                                  <h3><a id="work-in-progress-title" >
-                                  <span itemprop="name">Work in progress - new posts</span></a></h3>
-                                  <span itemprop="datePublished" content="2020-01-04" class="data">04 Jan 2020</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
-                                      <span itemprop="height">179</span>
-                                      <span itemprop="width">300</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body"><p>
-                                Under reconstruction! The aspect of this site may look broken for some browsers/resolutions.
-                              </p>
-                              <p>
-                                In the meantime, find below links to the most recent posts:
-                                <ul>
-                                  <li><a href="2020-01-03-dl-pulsi-intro.html">Early desaturation alarm system using Deep Learning - data augmentation for time series</a></li>
-                                  <li><a href="2019-11-24-arules-netcoin.html">Visualization of the results of Association Rules in a graph using netCoin</a></li>
-                                </ul>
-                              </br>
-                              </p>
-                              </div>
-                          </article>
-                      </div>
-                    </div>
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Favorites (says Google Analytics)</h5>
+          <div class="card-body">
+            <ul class="tales-list">
+                <li><a href="2016-04-01-uplift-evaluation.html">Cost/benefit evaluation of Uplift Modeling with an example in R</a></li>
+                <li><a href="2017-10-30-forecasting-bsts.html">MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models</a></li>
+                <li><a href="2017-05-15-time-series-clustering-pulsi.html">Clustering time series using DTW: pulsioximeter data</a></li>
+                <li><a href="2016-05-03-association-rules.html">Association Rules applied to Google Analytics data for insights on the structure of a web site</a></li>
+            </ul>
+          </div>
+        </div>
 
-                    <div class="row" id="row0">
-                      <!-- DL pulsi intro -->
-                      <div class="col-md-6 col-sm-6" id="dl-pulsi-intro-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/Falling-Man-300px.png" alt="Falling Man">
-                                  <h3><a href="2020-01-03-dl-pulsi-intro.html" id="dl-pulsi-intro-title" >
-                                  <span itemprop="name">Early desaturation alarm system using Deep Learning - data augmentation for time series</span></a></h3>
-                                  <span itemprop="datePublished" content="2020-01-03" class="data">03 Jan 2020</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
-                                      <span itemprop="height">179</span>
-                                      <span itemprop="width">300</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">pulsioximeter prediction, deep learning time series, data augmentation time series, desaturation alarm prediction, pulsioximeter deep learning, deep learning time series data augmentation</span></a></h3>
-                                    <span itemprop="dateModified" content="2020-01-04" class="meta">04 Jan 2020</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2020-01-03-dl-pulsi-intro.html" class="btn btn-tales-one" id="dl-pulsi-intro-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
+        <!-- Search Widget -->
+        <div class="card my-4" style="visibility: hidden">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
 
-                      <!-- Arules netcoin -->
-                      <div class="col-md-6 col-sm-6" id="arules-netcoin-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/Falling-Man-300px.png" alt="Falling Man">
-                                  <h3><a href="2019-11-24-arules-netcoin.html" id="arules-netcoin-title" >
-                                  <span itemprop="name">Visualization of the results of Association Rules in a graph using netCoin</span></a></h3>
-                                  <span itemprop="datePublished" content="2019-11-24" class="data">24 Nov 2019</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
-                                      <span itemprop="height">179</span>
-                                      <span itemprop="width">300</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">Visualization of Association Rules, R code, netCoin R package, frequent itemsets, visualization frequent itemsets, apriori, interpretation a priori</span></a></h3>
-                                    <span itemprop="dateModified" content="2019-12-10" class="meta">10 Dic 2019</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2019-11-24-arules-netcoin.html" class="btn btn-tales-one" id="arules-netcoin-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
+      </div>
 
+    </div>
+    <!-- /.row -->
 
-                    </div>
+  </div>
+  <!-- /.container -->
 
-                    <div class="row" id="row-1">
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-widget">
+                <h3 class="text-white"> <i></i>Contact us</h3>
 
-                      <!-- Uplift not random -->
-                      <div class="col-md-6 col-sm-6" id="uplift-notrandom-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/Falling-Man-300px.png" alt="Falling Man">
-                                  <h3><a href="2018-09-10-uplift-not-random-split.html" id="uplift-notrandom-title" >
-                                  <span itemprop="name">Uplift modeling: what if the split between treatment and control is not random</span></a></h3>
-                                  <span itemprop="datePublished" content="2018-09-10" class="data">10 Sep 2018</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Falling-Man-300px.png"></a>
-                                      <span itemprop="height">179</span>
-                                      <span itemprop="width">300</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">Uplift modeling, not random split treatment and control groups, problems with uplift, negative qini, negative gain, bad uplift classifier</span></a></h3>
-                                    <span itemprop="dateModified" content="2018-09-12" class="meta">12 Sep 2018</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  Uplift modeling does not work well when the split between targeted and not targeted customers is not done at random. The problem was raised by a reader of <a href="2016-04-01-uplift-evaluation.html">a previous post</a>; reproduced now with a public dataset. Symptoms: Qini area is negative, but otherwise the diagnosis for the classifier is ok. It includes code in R and a dataset, so that it may be used as a tutorial.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2018-09-10-uplift-not-random-split.html" class="btn btn-tales-one" id="uplift-notrandom-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
+                <span class="text-white">Happy to get any feedback:</span>
 
-                      <!-- Forecasting Challenge -->
-                      <div class="col-md-6 col-sm-6" id="forecasting-challenge-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/duel-300px.png" alt="Challenge">
-                                  <h3><a href="2017-10-30-forecasting-bsts.html" id="forecasting-challenge-title" >
-                                  <span itemprop="name">MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models</span></a></h3>
-                                  <span itemprop="datePublished" content="2017-11-31" class="data">31 Oct 2017</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/duel-300px.png"></a>
-                                      <span itemprop="height">300</span>
-                                      <span itemprop="width">276</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">MineThatData Forecasting Challenge, Bayesian Structural Time Series models, time series forecasting, R code, BSTS, cross-validation</span></a></h3>
-                                    <span itemprop="dateModified" content="2017-12-03" class="meta">03 Dic 2017</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  The challenge: forecasting the next 3 months of a target time series that contains data of sales of an unknown company. Markdown for R code.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2017-10-30-forecasting-bsts.html" class="btn btn-tales-one" id="forecasting-challenge-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-
-
-                    </div>
-                    <div class="row" id="row-2">
-
-                      <!-- Clustering DTW time series -->
-                      <div class="col-md-6 col-sm-6" id="clusteringdtw-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/EKG-Realistic-Heart-300px.png" alt="EKG Realistic Heart">
-                                  <h3><a href="2017-05-15-time-series-clustering-pulsi.html" id="clusteringdtw-title" >
-                                  <span itemprop="name">Clustering time series using DTW: pulsioximeter data</span></a></h3>
-                                  <span itemprop="datePublished" content="2017-05-21" class="data">21 May 2017</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/EKG-Realistic-Heart-300px.png"></a>
-                                      <span itemprop="height">82</span>
-                                      <span itemprop="width">288</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">apply clustering to time series using Dynamic Time Warping, R code, Dynamic Time Warping for pulsioximeter data, DTW, pulsioximeter dataset</span></a></h3>
-                                    <span itemprop="dateModified" content="2017-11-05" class="meta">5 Nov 2017</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  Using now data from a pulsioximeter (instead of the accelerometer of previous posts), anyhow generating a big amount time series -the device is switched on every night with a patient, and for comparison a few nights from a healthier person are added. As a step of an initial exploratory analysis of the set of time series, the objective is to perform a clustering of a dataset of time series, using Dynamic Time Warping as the distance measure. It includes code in R and a dataset, so that it may be used as a tutorial.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2017-05-15-time-series-clustering-pulsi.html" class="btn btn-tales-one" id="clusteringdtw-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-                      <!-- Time series neural net -->
-                      <div class="col-md-6 col-sm-6" id="timeseriesnn-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/Neural-Network-2-200px.png" alt="Neural network">
-                                  <h3><a href="2017-01-07-time-series-neural-net.html" id="timeseriesnn-title" >
-                                  <span itemprop="name">Applying neural nets to time series: accelerometer data from wearable</span></a></h3>
-                                  <span itemprop="datePublished" content="2017-01-20" class="data">20 Jan 2017</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Neural-Network-2-200px.png"></a>
-                                      <span itemprop="height">171</span>
-                                      <span itemprop="width">200</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">apply neural network to time series, R code, detecting physical activity levels, accelerator data, wearables, neural net</span></a></h3>
-                                    <span itemprop="dateModified" content="2017-01-29" class="meta">29 Jan 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  When approaching a somehow more advanced analysis of the data coming from an accelerometer, the far-from-obvious concepts from time series start to be needed. But are they really needed? Maybe not, since one could always apply a neural network for solving the problem. Is this second path easier in practice? It includes code in R and a dataset, so that it may be used as a tutorial.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2017-01-07-time-series-neural-net.html" class="btn btn-tales-one" id="timeseriesnn-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-
-                    </div>
-                    <div class="row" id="row-3">
-
-                      <!-- Wearable physical -->
-                      <div class="col-md-6 col-sm-6" id="wearphysical-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/johnny-automatic-spinning-a-top-200px.png" alt="Spinning a top">
-                                  <h3><a href="2016-11-05-wearable-physical-activity.html" id="wearphysical-title" >
-                                  <span itemprop="name">Wearables: measuring physical activity from accelerometer data</span></a></h3>
-                                  <span itemprop="datePublished" content="2016-11-05" class="data">5 Nov 2016</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/johnny-automatic-spinning-a-top-200px.png"></a>
-                                      <span itemprop="height">195</span>
-                                      <span itemprop="width">200</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">wearables, analysis, R code, detecting physical activity levels, acceleration signal vector magnitude</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-11-06" class="data">6 Nov 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  The very first analysis to try for the data coming from an accelerometer: measuring the physical activity of the user. Actually, the simplest statictic measures already tell a lot -in particular the standard deviation of the Signal Vector Magnitude (i.e. the modulus). It includes code in R and a dataset, so that it may be used as a tutorial.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2016-11-05-wearable-physical-activity.html" class="btn btn-tales-one" id="wearphysical-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-                      <!-- Wearable robust -->
-                      <div class="col-md-6 col-sm-6" id="wearups-robust-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/strongmancontrol-300px.png" alt="Strong Man Control">
-                                  <h3><a href="2016-10-30-wearable-robust.html" id="wearrobust-title" >
-                                  <span itemprop="name">Upstreaming data from a wearable device to a server: making a robust Android app for the lab</span></a></h3>
-                                  <span itemprop="datePublished" content="2016-10-31" class="meta">31 Oct 2016</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/strongmancontrol-300px.png"></a>
-                                      <span itemprop="height">156</span>
-                                      <span itemprop="width">300</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, activity and service, Android Processes and Application Life Cycle</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-11-01" class="meta">1 Nov 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  Still setting up a lab for a number of wearables, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later... In this post, some conclusions on how to make the app robust enough, so that the users can do whatever they like with their smartphones during the experiment.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2016-10-30-wearable-robust.html" class="btn btn-tales-one" id="wearrobust-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-
-                    </div>
-
-                    <div class="row" id="row-4">
-
-                      <!-- Wearable upstream -->
-                      <div class="col-md-6 col-sm-6" id="wearupstream-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/tom-Boiling-point-of-water-200px.png" alt="Boiling point of water">
-                                  <h3><a href="2016-08-09-wearable-data-upstream.html" id="wearupstream-title" >
-                                  <span itemprop="name">Upstreaming data from a wearable device to a server: a Android app for a data lab</span></a></h3>
-                                  <span itemprop="datePublished" content="2016-08-09" class="meta">9 Aug 2016</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/tom-Boiling-point-of-water-200px.png"></a>
-                                      <span itemprop="height">200</span>
-                                      <span itemprop="width">153</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">getting data from a wearable upstream, Android app, data lab, accelerometer data analysis</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-10-31" class="meta">31 Oct 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  Setting up a lab for a number of wearables, in which all the raw data from sensors (e.g. accelerometer) goes upstream to a server, to be analyzed later. Some features are not so common in an Android app implementation, e.g. a not negligible upstream of data. Includes detailed explanations and Java code.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2016-08-09-wearable-data-upstream.html" class="btn btn-tales-one" id="wearupstream-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-                      <!-- GA user ids -->
-                      <div class="col-md-6 col-sm-6" id="gauserid-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/users81-200px.png" alt="User">
-                                  <h3><a href="2016-06-10-infer-GA-sessions.html" id="gauserid-title" >
-                                  <span itemprop="name">Google Analytics: how to figure out sessions when a custom user id is not set (follow up on Association Rules)</span></a></h3>
-                                  <span itemprop="datePublished" content="2016-06-10" class="meta">10 Jun 2016</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/users81-200px.png"></a>
-                                      <span itemprop="height">200</span>
-                                      <span itemprop="width">153</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">figure out sessions of Google Analytics, clickstream, Association Rules, custom user id</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-06-12" class="meta">12 Jun 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  How to identify sessions in records from Google Analytics, when your customer has not set the custom user id dimension (follow up on Association Rules post). Also, identify the sessions of the users in other cases with GA data, e.g. when associating events to sessions. Plus the code in R.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2016-06-10-infer-GA-sessions.html" class="btn btn-tales-one" id="gauserid-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-                    </div>
-
-                    <div class="row" id="row-5">
-
-                      <!-- arules -->
-                      <div class="col-md-6 col-sm-6" id="arules-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/Petroglyph-Rayed-figure-200px.png" alt="Petroglyph">
-                                  <h3><a href="2016-05-03-association-rules.html" id="arules-title" >
-                                  <span itemprop="name">Association Rules applied to Google Analytics data for insights on the structure of a web site</span></a></h3>
-                                  <span itemprop="datePublished" content="2016-05-06" class="meta">6 May 2016</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/Petroglyph-Rayed-figure-200px.png"></a>
-                                      <span itemprop="height">200</span>
-                                      <span itemprop="width">175</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">apriori for clikstream data, structure of the site as seen by the users, collaborative filtering</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-05-16" class="meta">16 May 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  How to mine Association Rules on clickstream data from Google Analytics, as a way to understand how users visit your web site. Includes details on how to configure GA and how to extract the data into R, plus the code in R for mining the rules. Seed for a recommendation system in your web site.
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2016-05-03-association-rules.html" class="btn btn-tales-one" id="arules-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-                      <!-- uplift -->
-                      <div class="col-md-6 col-sm-6" id="uplift-div">
-                          <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
-                              <header>
-                                  <img src="img/liftarn-Perseus-200px.png" alt="Perseus">
-                                  <h3><a href="2016-04-01-uplift-evaluation.html" id="uplift-title" >
-                                  <span itemprop="name">Cost/benefit evaluation of Uplift Modeling with an example in R</span></a></h3>
-                                  <span itemprop="datePublished" content="2016-04-06" class="meta">6 April 2016</span>
-                                  <span style="display: none"><!-- Structured Data -->
-                                    <span itemprop="author" itemtype="http://schema.org/Person">
-                                      <span itemprop="name">sisifospage@gmail.com</span>
-                                    </span>
-                                    <span itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-                                      <a itemprop="url" href="http://lrnzcig.github.io/img/liftarn-Perseus-200px.png"></a>
-                                      <span itemprop="height">200</span>
-                                      <span itemprop="width">143</span>
-                                    </span>
-                                    <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-                                      <span itemprop="name">Sisifo's Page</span>
-                                      <span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-                                        <a itemprop="url" href="http://lrnzcig.github.io/img/Frankenstein-300px.png"></a>
-                                      </span>
-                                    </span>
-                                    <span itemprop="headline" style="display: none">scenarios are relevant for uplift modeling, evaluate them from a business perspective</span></a></h3>
-                                    <span itemprop="dateModified" content="2016-09-24" class="meta">24 September 2016</span>
-                                    <span itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPage">
-                                    </span>
-                                  </span>
-                                  <hr>
-                              </header>
-                              <div class="body">
-                                  Is there a way to distinguish the customers that respond (or not) to a marketing action when targeted, from the customers that respond (or not) when they are not targeted? Which scenarios are relevant for uplift modeling, compared to a “traditional” model? How to evaluate them from a business perspective? How to fit the uplift model in R?
-                              </div>
-                              <div class="clearfix">
-                                  <a href="2016-04-01-uplift-evaluation.html" class="btn btn-tales-one" id="uplift-click">Read more</a>
-                              </div>
-                          </article>
-                      </div>
-
-                    </div>
-
-                    <div class="paging">
-                        <a href="#" class="newer" id="newer"><i class="fa fa-long-arrow-left"></i> Newer</a>
-                         <span>&bull;</span>
-                        <a href="#" class="older" id="older">Older <i class="fa fa-long-arrow-right"></i></a>
-                    </div>
-                </div>
-                <aside class="col-md-4 blog-aside">
-
-                  <div class="aside-widget">
-                      <header>
-                          <h3>Favorites (says Google Analytics)</h3>
-                      </header>
-                      <div class="body">
-                          <ul class="tales-list">
-                              <li><a href="2016-04-01-uplift-evaluation.html">Cost/benefit evaluation of Uplift Modeling with an example in R</a></li>
-                              <li><a href="2017-10-30-forecasting-bsts.html">MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models</a></li>
-                              <li><a href="2017-05-15-time-series-clustering-pulsi.html">Clustering time series using DTW: pulsioximeter data</a></li>
-                              <li><a href="2016-05-03-association-rules.html">Association Rules applied to Google Analytics data for insights on the structure of a web site</a></li>
-                          </ul>
-                      </div>
-                  </div>
-
-
-                  <div class="aside-widget">
-                      <header>
-                          <h3>Tags</h3>
-                      </header>
-                      <div class="body clearfix">
-                          <ul class="tags" id="tags-ul">
-                              <li><a href="#">Uplift modeling</a></li>
-                              <li><a href="#">R</a></li>
-                              <li><a href="#">Business evaluation</a></li>
-                              <li><a href="#">Association Rules</a></li>
-                              <li><a href="#">Google Analytics</a></li>
-                              <li><a href="#">Wearables</a></li>
-                              <li><a href="#">Android app</a></li>
-                              <li><a href="#">Neural network</a></li>
-                              <li><a href="#">Clustering</a></li>
-                              <li><a href="#">BSTS</a></li>
-                          </ul>
-                      </div>
-                  </div>
-                </aside>
+                <span class="email text-white">
+                    <a href="#">sisifospage@gmail.com</a>
+                </span>
             </div>
         </div>
     </div>
+    <div class="container">
+      <br/>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+      </a>
+      <br/>
+      <p class="m-0 text-white">This work is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+          Creative Commons Attribution 4.0 International License
+        </a>
+      </p>
+    </div>
+  </footer>
 
-    <footer>
-        <div class="widewrapper footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-envelope"></i>Contact us</h3>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                        <span>Happy to get any feedback:</span>
-
-                        <span class="email">
-                            <a href="#"><span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                                  <span itemprop="name">sisifospage@gmail.com</a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="widewrapper copyright">
-            <div class="container">
-                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="modules/modernizr/modernizr-custom.js"></script>
-
-    <script src="js/manage_index.js"></script>
-    <script type="text/javascript">
-    $( document ).ready(function() {
-      row0.style.display = 'none';
-    });
-    </script>
 </body>
+
 </html>
