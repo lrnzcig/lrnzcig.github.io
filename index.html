@@ -84,7 +84,7 @@
         </h1>
 
         <!-- DL pulsi intro -->
-        <div class="card mb-4"  id="uplift-notrandom-div">
+        <div class="card mb-4"  id="dlpulsiintro-div">
           <article itemscope itemtype="http://schema.org/Article" class="blog-teaser">
             <div class="card-body">
               <header>
@@ -126,8 +126,12 @@
                 <p>
                   In the meantime, find below links to the most recent posts:
                   <ul>
-                    <li><a href="2020-01-03-dl-pulsi-intro.html">Early desaturation alarm system using Deep Learning - data augmentation for time series</a></li>
-                    <li><a href="2019-11-24-arules-netcoin.html">Visualization of the results of Association Rules in a graph using netCoin</a></li>
+                    <li><a href="2020-01-03-dl-pulsi-intro.html" id="dlpulsiintro-click"
+                      >Early desaturation alarm system using Deep Learning - data augmentation for time series
+                    </a></li>
+                    <li><a href="2019-11-24-arules-netcoin.html" id="netcoin-click">
+                      Visualization of the results of Association Rules in a graph using netCoin
+                    </a></li>
                   </ul>
                 </p>
               </p>
@@ -602,10 +606,10 @@
 
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
+          <li class="page-item" id="older">
             <a class="page-link" href="#">&larr; Older</a>
           </li>
-          <li class="page-item disabled">
+          <li class="page-item disabled" id="newer">
             <a class="page-link" href="#">Newer &rarr;</a>
           </li>
         </ul>
@@ -620,7 +624,7 @@
           <h5 class="card-header">Categories</h5>
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-8">
                 <ul class="list-unstyled mb-0" id="tags-ul">
                   <li><a href="#">Uplift modeling</a></li>
                   <li><a href="#">R</a></li>
@@ -643,10 +647,18 @@
           <h5 class="card-header">Favorites (says Google Analytics)</h5>
           <div class="card-body">
             <ul class="tales-list">
-                <li><a href="2016-04-01-uplift-evaluation.html">Cost/benefit evaluation of Uplift Modeling with an example in R</a></li>
-                <li><a href="2017-10-30-forecasting-bsts.html">MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models</a></li>
-                <li><a href="2017-05-15-time-series-clustering-pulsi.html">Clustering time series using DTW: pulsioximeter data</a></li>
-                <li><a href="2016-05-03-association-rules.html">Association Rules applied to Google Analytics data for insights on the structure of a web site</a></li>
+                <li><a href="2016-04-01-uplift-evaluation.html">
+                  Cost/benefit evaluation of Uplift Modeling with an example in R
+                </a></li>
+                <li><a href="2017-10-30-forecasting-bsts.html">
+                  MineThatData Forecasting Challenge: proposed solution with Bayesian Structural Time Series models
+                </a></li>
+                <li><a href="2017-05-15-time-series-clustering-pulsi.html">
+                  Clustering time series using DTW: pulsioximeter data
+                </a></li>
+                <li><a href="2016-05-03-association-rules.html">
+                  Association Rules applied to Google Analytics data for insights on the structure of a web site
+                </a></li>
             </ul>
           </div>
         </div>
@@ -704,6 +716,9 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- page controls -->
+  <script src="js/manage_index.js"></script>
 
 </body>
 

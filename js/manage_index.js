@@ -243,11 +243,6 @@ function hideShowDivsForTags(tag_value) {
   var newer = document.getElementById('newer');
   // TODO another global variable with number of posts that are visible
   if (tag_value == "Uplift modeling" || tag_value == "Business evaluation") {
-    row1.style.display = 'none';
-    row2.style.display = 'none';
-    row3.style.display = 'none';
-    row4.style.display = 'none';
-    row5.style.display = '';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
     uplift.style.display = '';
@@ -258,16 +253,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = '';
-    $("#uplift-notrandom-div").detach().appendTo("#row-5");
-    $("#uplift-div").detach().appendTo("#row-5");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
-    row1.style.display = 'none';
-    row2.style.display = 'none';
-    row3.style.display = 'none';
-    row4.style.display = '';
-    row5.style.display = 'none';
     arules.style.display = '';
     gauserid.style.display = '';
     uplift.style.display = 'none';
@@ -278,16 +267,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
-    $("#gauserid-div").detach().appendTo("#row-4");
-    $("#arules-div").detach().appendTo("#row-4");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "R") {
-    row1.style.display = '';
-    row2.style.display = '';
-    row3.style.display = 'none';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = '';
     gauserid.style.display = '';
     uplift.style.display = '';
@@ -298,22 +281,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = '';
     forchallenge.style.display = '';
     upliftnotrandom.style.display = '';
-    $("#uplift-notrandom-div").detach().appendTo("#row-1");
-    $("#forecasting-challenge-div").detach().appendTo("#row-1");
-    $("#clusteringdtw-div").detach().appendTo("#row-2");
-    $("#timeseriesnn-div").detach().appendTo("#row-2");
-    $("#wearphysical-div").detach().appendTo("#row-3");
-    $("#gauserid-div").detach().appendTo("#row-3");
-    $("#arules-div").detach().appendTo("#row-4");
-    $("#uplift-div").detach().appendTo("#row-4");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'visible';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Wearables") {
-    row1.style.display = 'none';
-    row2.style.display = '';
-    row3.style.display = '';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
     uplift.style.display = 'none';
@@ -324,18 +295,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
-    $("#timeseriesnn-div").detach().appendTo("#row-2");
-    $("#wearphysical-div").detach().appendTo("#row-2");
-    $("#wearups-robust-div").detach().appendTo("#row-3");
-    $("#wearupstream-div").detach().appendTo("#row-3");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Android app") {
-    row1.style.display = 'none';
-    row2.style.display = 'none';
-    row3.style.display = '';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
     uplift.style.display = 'none';
@@ -346,16 +309,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
-    $("#wearups-robust-div").detach().appendTo("#row-3");
-    $("#wearupstream-div").detach().appendTo("#row-3");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Neural network") {
-    row1.style.display = 'none';
-    row2.style.display = '';
-    row3.style.display = 'none';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
     uplift.style.display = 'none';
@@ -366,16 +323,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
-    $("#timeseriesnn-div").detach().appendTo("#row-2");
-    $("#wearphysical-div").detach().appendTo("#row-2");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "Clustering") {
-    row1.style.display = '';
-    row2.style.display = 'none';
-    row3.style.display = 'none';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = '';
     gauserid.style.display = 'none';
     uplift.style.display = 'none';
@@ -386,16 +337,10 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = '';
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
-    $("#clusteringdtw-div").detach().appendTo("#row-1");
-    $("#arules-div").detach().appendTo("#row-1");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else if (tag_value == "BSTS") {
-    row1.style.display = '';
-    row2.style.display = 'none';
-    row3.style.display = 'none';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = 'none';
     gauserid.style.display = 'none';
     uplift.style.display = 'none';
@@ -406,16 +351,11 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = 'none';
     forchallenge.style.display = '';
     upliftnotrandom.style.display = 'none';
-    $("#forecasting-challenge-div").detach().appendTo("#row-1");
+    dlpulsiintro.style.display = 'none';
     older.style.visibility = 'hidden';
     newer.style.visibility = 'hidden';
   } else {
     // i.e. no tag has been clicked
-    row1.style.display = '';
-    row2.style.display = '';
-    row3.style.display = 'none';
-    row4.style.display = 'none';
-    row5.style.display = 'none';
     arules.style.display = '';
     gauserid.style.display = '';
     uplift.style.display = '';
@@ -426,38 +366,24 @@ function hideShowDivsForTags(tag_value) {
     clusteringdtw.style.display = '';
     forchallenge.style.display = '';
     upliftnotrandom.style.display = '';
-    $("#uplift-notrandom-div").detach().appendTo("#row-1");
-    $("#forecasting-challenge-div").detach().appendTo("#row-1");
-    $("#clusteringdtw-div").detach().appendTo("#row-2");
-    $("#timeseriesnn-div").detach().appendTo("#row-2");
-    $("#wearphysical-div").detach().appendTo("#row-3");
-    $("#wearups-robust-div").detach().appendTo("#row-3");
-    $("#wearupstream-div").detach().appendTo("#row-4");
-    $("#gauserid-div").detach().appendTo("#row-4");
-    $("#arules-div").detach().appendTo("#row-5");
-    $("#uplift-div").detach().appendTo("#row-5");
+    dlpulsiintro.style.display = '';
     older.style.visibility = 'visible';
     newer.style.visibility = 'hidden';
   }
 };
 
-// rows
-var row1 = document.getElementById('row-1');
-var row2 = document.getElementById('row-2');
-var row3 = document.getElementById('row-3');
-var row4 = document.getElementById('row-4');
-var row5 = document.getElementById('row-5');
 // divs
 var arules = document.getElementById('arules-div');
 var gauserid = document.getElementById('gauserid-div');
 var uplift = document.getElementById('uplift-div');
 var wearupstream = document.getElementById('wearupstream-div');
-var wearrobust = document.getElementById('wearups-robust-div');
+var wearrobust = document.getElementById('wearrobust-div');
 var wearphysical = document.getElementById('wearphysical-div');
 var timeseriesnn = document.getElementById('timeseriesnn-div');
 var clusteringdtw = document.getElementById('clusteringdtw-div');
 var forchallenge = document.getElementById('forecasting-challenge-div');
 var upliftnotrandom = document.getElementById('uplift-notrandom-div');
+var dlpulsiintro = document.getElementById('dlpulsiintro-div');
 // GA events
 var uc = document.getElementById('uplift-click');
 var ut = document.getElementById('uplift-title');
@@ -483,10 +409,8 @@ var unrt = document.getElementById('uplift-notrandom-title');
 var lastTagClicked = null;
 
 // initial state
-row3.style.display = 'none';
-row4.style.display = 'none';
-row5.style.display = 'none';
-document.getElementById('newer').style.visibility = 'hidden';
+document.getElementById('newer').classList.add("disabled");
+document.getElementById('older').classList.add("disabled");
 
 initTagsGAButtons();
 initOlderNewerListeners();
