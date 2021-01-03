@@ -186,6 +186,20 @@ function initTagsGAButtons() {
     eventLabel: 'UpNRandom',
     eventValue: 20 });
   }, false);
+  pvbc.addEventListener('click', function() {
+    ga('send', { hitType: 'event',
+    eventCategory: 'ReadMore',
+    eventAction: 'Click',
+    eventLabel: 'ProphetBSTS',
+    eventValue: 21 });
+  }, false);
+  pvbt.addEventListener('click', function() {
+    ga('send', { hitType: 'event',
+    eventCategory: 'Title',
+    eventAction: 'Click',
+    eventLabel: 'ProphetBSTS',
+    eventValue: 22 });
+  }, false);
 
 };
 
@@ -196,13 +210,13 @@ function initOlderNewerListeners() {
   var newer = document.getElementById('newer');
   older.addEventListener('click', function() {
     if (typeof $('#tags-ul').innerHTML == "undefined") {
-      if (gauserid.style.display == 'none' &&
-          wearupstream.style.display == '') {
+      if (wearupstream.style.display == 'none' &&
+          wearrobust.style.display == '') {
         // second time older has been pressed
         uplift.style.display = '';
         arules.style.display = '';
         gauserid.style.display = '';
-        wearupstream.style.display = 'none';
+        wearupstream.style.display = '';
         wearrobust.style.display = 'none';
         wearphysical.style.display = 'none';
         timeseriesnn.style.display = 'none';
@@ -210,40 +224,43 @@ function initOlderNewerListeners() {
         forchallenge.style.display = 'none';
         upliftnotrandom.style.display = 'none';
         dlpulsiintro.style.display = 'none';
+        prophetvsbsts.style.display = 'none';
         document.getElementById('older').classList.add("disabled");
       } else {
         // first time
         uplift.style.display = 'none';
         arules.style.display = 'none';
         gauserid.style.display = 'none';
-        wearupstream.style.display = '';
+        wearupstream.style.display = 'none';
         wearrobust.style.display = '';
         wearphysical.style.display = '';
         timeseriesnn.style.display = '';
-        clusteringdtw.style.display = 'none';
+        clusteringdtw.style.display = '';
         forchallenge.style.display = 'none';
         upliftnotrandom.style.display = 'none';
         dlpulsiintro.style.display = 'none';
+        prophetvsbsts.style.display = 'none';
       }
       document.getElementById('newer').classList.remove("disabled");
     }
   }, false);
   newer.addEventListener('click', function() {
     if (typeof $('#tags-ul').innerHTML == "undefined") {
-      if (wearupstream.style.display == 'none' &&
+      if (wearrobust.style.display == 'none' &&
           uplift.style.display == '') {
         // looking at last page
         uplift.style.display = 'none';
         arules.style.display = 'none';
         gauserid.style.display = 'none';
-        wearupstream.style.display = '';
+        wearupstream.style.display = 'none';
         wearrobust.style.display = '';
         wearphysical.style.display = '';
         timeseriesnn.style.display = '';
-        clusteringdtw.style.display = 'none';
+        clusteringdtw.style.display = '';
         forchallenge.style.display = 'none';
         upliftnotrandom.style.display = 'none';
         dlpulsiintro.style.display = 'none';
+        prophetvsbsts.style.display = 'none';
       } else {
         uplift.style.display = 'none';
         arules.style.display = 'none';
@@ -252,10 +269,11 @@ function initOlderNewerListeners() {
         wearrobust.style.display = 'none';
         wearphysical.style.display = 'none';
         timeseriesnn.style.display = 'none';
-        clusteringdtw.style.display = '';
+        clusteringdtw.style.display = 'none';
         forchallenge.style.display = '';
         upliftnotrandom.style.display = '';
         dlpulsiintro.style.display = '';
+        prophetvsbsts.style.display = '';
         document.getElementById('newer').classList.add("disabled");
       }
       document.getElementById('older').classList.remove("disabled");
@@ -281,6 +299,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = '';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = 'none';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "Association Rules" || tag_value == "Google Analytics") {
@@ -295,6 +314,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = 'none';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "R") {
@@ -309,6 +329,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = '';
     upliftnotrandom.style.display = '';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = '';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "Wearables") {
@@ -323,6 +344,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = 'none';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "Android app") {
@@ -337,6 +359,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = 'none';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "Neural network") {
@@ -351,6 +374,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = 'none';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "Clustering") {
@@ -365,6 +389,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = 'none';
     upliftnotrandom.style.display = 'none';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = 'none';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else if (tag_value == "BSTS") {
@@ -379,6 +404,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = '';
     upliftnotrandom.style.display = 'none';
     dlpulsiintro.style.display = 'none';
+    prophetvsbsts.style.display = '';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   } else {
@@ -394,6 +420,7 @@ function hideShowDivsForTags(tag_value) {
     forchallenge.style.display = '';
     upliftnotrandom.style.display = '';
     dlpulsiintro.style.display = '';
+    prophetvsbsts.style.display = '';
     document.getElementById('newer').classList.add("disabled");
     document.getElementById('older').classList.add("disabled");
   }
@@ -411,6 +438,7 @@ var clusteringdtw = document.getElementById('clusteringdtw-div');
 var forchallenge = document.getElementById('forecasting-challenge-div');
 var upliftnotrandom = document.getElementById('uplift-notrandom-div');
 var dlpulsiintro = document.getElementById('dlpulsiintro-div');
+var prophetvsbsts = document.getElementById('prophet-vs-bsts-div');
 // GA events
 var uc = document.getElementById('uplift-click');
 var ut = document.getElementById('uplift-title');
@@ -432,6 +460,8 @@ var fcc = document.getElementById('forecasting-challenge-click');
 var fct = document.getElementById('forecasting-challenge-title');
 var unrc = document.getElementById('uplift-notrandom-click');
 var unrt = document.getElementById('uplift-notrandom-title');
+var pvbc = document.getElementById('prophet-vs-bsts-click');
+var pvbt = document.getElementById('prophet-vs-bsts-title');
 // selected tag
 var lastTagClicked = null;
 
@@ -443,9 +473,10 @@ wearupstream.style.display = 'none';
 wearrobust.style.display = 'none';
 wearphysical.style.display = 'none';
 timeseriesnn.style.display = 'none';
-clusteringdtw.style.display = '';
+clusteringdtw.style.display = 'none';
 forchallenge.style.display = '';
 upliftnotrandom.style.display = '';
+dlpulsiintro.style.display = '';
 dlpulsiintro.style.display = '';
 document.getElementById('newer').classList.add("disabled");
 document.getElementById('older').classList.remove("disabled");
